@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlashAppart - Payez votre loyer en ligne au Bénin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700&family=Inter:wght@400;500;600&family=Noto+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'jakarta': ['Plus Jakarta Sans', 'sans-serif'],
+                        'inter': ['Inter', 'sans-serif'],
+                        'noto': ['Noto Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#3364CA',
+                        'secondary': '#F4902E',
+                        'accent': '#B41F25',
+                        'dark': '#22252D',
+                        'light-gray': '#E7E6E6',
+                    }
+                }
+            }
+        }
+    </script>
+    
+  <style>
+    /* Added mobile menu transition styles */
+    .mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+    
+    .mobile-menu.active {
+        max-height: 500px;
+        transition: max-height 0.3s ease-in;
+    }
+    
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+    
+    .accordion-content.active {
+        max-height: 500px;
+        transition: max-height 0.3s ease-in;
+    }
+    
+    .accordion-icon {
+        transition: transform 0.3s ease;
+    }
+
+    .carousel-slide {
+        pointer-events: none;
+    }
+    
+    .carousel-slide.active {
+        pointer-events: auto;
+        opacity: 1 !important;
+    }
+    
+    .carousel-indicator.active-indicator {
+        background-color: white;
+        transform: scale(1.2);
+    }        
+    
+    .faq-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
+        opacity: 0;
+    }
+    
+    .faq-content.active {
+        max-height: 800px;
+        opacity: 1;
+        transition: max-height 0.4s ease-in, opacity 0.3s ease-in;
+    }
+    
+    .faq-button {
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+    
+    .faq-button.active {
+        transform: rotate(45deg);
+    }
+    
+    .testimonials-container {
+        display: flex;
+        width: 300%;
+        transition: transform 0.5s ease-in-out;
+    }
+    
+    .testimonial-set {
+        flex: 0 0 33.333%;
+    }
+    
+    .testimonial-dot.active-dot {
+        background-color: #22252D;
+        transform: scale(1.2);
+    }
+    
+    /* Added responsive testimonials for mobile */
+    @media (max-width: 768px) {
+        .testimonials-container {
+            width: 900%;
+        }
+        
+        .testimonial-set {
+            flex: 0 0 11.111%;
+        }
+    }
+  </style>
+</head>
+<body class="font-poppins bg-white">
+    <!-- Enhanced header with mobile hamburger menu -->
+    <header class="container mx-auto px-4 py-4 md:py-6 max-w-7xl">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center">
+                <img src="Images/Gemini_Generated_Image_mgy05mgy05mgy05m 1.png" alt="FlashAppart Logo" >
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center gap-6 bg-dark/5 px-6 py-4 rounded-xl">
+                <a href="index.html" class="text-dark font-bold text-base">Accueil</a>
+                <a href="rechercher_maison.html" class="text-dark text-base hover:font-semibold transition">Faire un paiement</a>
+                <a href="#" class="text-dark text-base hover:font-semibold transition">Faire un enregistrement</a>
+                <a href="#" class="text-dark text-base hover:font-semibold transition">À propos de nous</a>
+            </nav>
+            
+            <!-- Desktop Contact Button -->
+            <button class="hidden md:block bg-primary text-white px-5 md:px-7 py-3 md:py-4 rounded-xl font-semibold text-sm md:text-base hover:bg-primary/90 transition">
+                Contactez-nous
+            </button>
+            
+            <!-- Mobile Hamburger Button -->
+            <button onclick="toggleMobileMenu()" class="lg:hidden flex flex-col gap-1.5 p-2" aria-label="Menu">
+                <span class="w-6 h-0.5 bg-dark transition-all"></span>
+                <span class="w-6 h-0.5 bg-dark transition-all"></span>
+                <span class="w-6 h-0.5 bg-dark transition-all"></span>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu lg:hidden">
+            <nav class="flex flex-col gap-4 pt-6 pb-4">
+                <a href="index.html" class="text-dark font-bold text-base py-2 border-b border-dark/10">Accueil</a>
+                <a href="rechercher_maison.html" class="text-dark text-base hover:font-semibold transition py-2 border-b border-dark/10">Faire un paiement</a>
+                <a href="#" class="text-dark text-base hover:font-semibold transition py-2 border-b border-dark/10">Faire un enregistrement</a>
+                <a href="#" class="text-dark text-base hover:font-semibold transition py-2 border-b border-dark/10">À propos de nous</a>
+                <button class="bg-primary text-white px-6 py-3 rounded-xl font-semibold text-base hover:bg-primary/90 transition mt-2">
+                    Contactez-nous
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Improved hero section responsive design -->
+    <section class="container mx-auto px-4 mt-6 md:mt-12 max-w-7xl">
+        <div class="bg-[#3364CA] rounded-[25px] md:rounded-[45px] px-6 md:px-16 py-10 md:py-20 relative overflow-hidden min-h-[450px] md:min-h-[595px] flex items-center">
+            <!-- Carousel Container -->
+            <div class="carousel-container w-full h-full">
+                <!-- Slide 1 -->
+                <div class="carousel-slide active absolute inset-0 px-6 md:px-16 py-10 md:py-20 flex items-center transition-opacity duration-700">
+                    <div class="relative z-10 max-w-full md:max-w-md">
+                        <h1 class="text-white text-3xl md:text-5xl lg:text-[36px] font-semibold leading-tight mb-4 md:mb-8">
+                            Simplifiez-vous la vie. Payez votre loyer en ligne au Bénin.
+                        </h1>
+                        <p class="text-white text-1xl md:text-2xl font-normal mb-2 md:mb-8">Juste avec votre téléphone, vous sécurisez votre chambre.</p>
+                        
+                        <div class="flex flex-col sm:flex-row flex-wrap gap-3 pt-2">
+                            <button class="bg-[#FF8C00] text-white px-6 py-3 rounded-xl font-semibold text-base hover:bg-[#FF8C00]/90 transition shadow-lg">
+                                Payez maintenant
+                            </button>
+                            <button class="bg-white text-[#01548A] px-6 py-3 rounded-xl font-semibold text-base hover:bg-white/90 transition shadow-lg">
+                                Enregistrez une maison
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Phone Mockups Slide 1 -->
+                    <div class="absolute right-4 md:right-16 top-12 md:top-16 flex gap-3 md:gap-6 hidden md:flex">
+                        <div class="w-[200px] md:w-[289px] h-[320px] md:h-[452px] rounded-[40px] md:rounded-[60px] overflow-hidden border-[#FFFF] border-[6px] p-2">
+                            <img src="Images/Banner1µ1.png" alt="Phone mockup 1" class="w-full h-full object-cover rounded-[32px] md:rounded-[52px]">
+                        </div>
+                        <div class="w-[190px] md:w-[280px] h-[310px] md:h-[443px] rounded-[40px] md:rounded-[60px] overflow-hidden border-[#FFFF] border-[6px] p-2 mt-8 md:mt-12">
+                            <img src="Images/Banner2.png" alt="Phone mockup 2" class="w-full h-full object-cover rounded-[32px] md:rounded-[52px]">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-slide absolute inset-0 px-6 md:px-16 py-10 md:py-20 flex items-center transition-opacity duration-700 opacity-0">
+                    <div class="relative z-10 max-w-full md:max-w-md">
+                        <h1 class="text-white text-3xl md:text-4xl lg:text-[36px] font-semibold leading-tight mb-6 md:mb-8">
+                            Enregistrez votre maison en quelques clics.
+                        </h1>
+                            <p class="text-white text-1xl md:text-2xl font-normal mb-2 md:mb-8">Juste avec votre téléphone, vous sécurisez votre chambre.</p>
+
+                        <div class="flex flex-col sm:flex-row flex-wrap gap-3 pt-2">
+                            <button class="bg-[#FF8C00] text-white px-6 py-3 rounded-xl font-semibold text-base hover:bg-[#FF8C00]/90 transition shadow-lg">
+                                Enregistrez une maison
+                            </button>
+                            <button class="bg-white text-[#01548A] px-6 py-3 rounded-xl font-semibold text-base hover:bg-white/90 transition shadow-lg">
+                                Voir les offres
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Phone Mockups Slide 2 -->
+                    <div class="absolute right-4 md:right-16 top-12 md:top-16 flex gap-3 md:gap-6 hidden md:flex">
+                        <div class="w-[200px] md:w-[289px] h-[320px] md:h-[452px] border-[#FFFF] rounded-[40px] md:rounded-[60px] overflow-hidden border-[8px] p-2">
+                            <img src="Images/Gemini_Generated_Image_peo34l3.png" alt="Phone mockup 3" class="w-full h-full object-cover rounded-[32px] md:rounded-[52px]">
+                        </div>
+                        <div class="w-[190px] md:w-[280px] h-[310px] md:h-[443px] rounded-[40px] md:rounded-[60px] overflow-hidden border-[6px] border-[#FFFF] p-2 mt-8 md:mt-12">
+                            <img src="Images/Banner14.png" alt="Phone mockup 4" class="w-full h-full object-cover rounded-[32px] md:rounded-[52px]">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="carousel-slide absolute inset-0 px-6 md:px-16 py-10 md:py-20 flex items-center transition-opacity duration-700 opacity-0">
+                    <div class="relative z-10 max-w-full md:max-w-md">
+                        <h1 class="text-white text-3xl md:text-4xl lg:text-[36px] font-semibold leading-tight mb-6 md:mb-8">
+                            Gérez vos paiements en toute sécurité et simplicité.
+                        </h1>
+                            <p class="text-white text-1xl md:text-2xl font-normal mb-2 md:mb-8">Juste avec votre téléphone, vous sécurisez votre chambre.</p>
+                        <div class="flex flex-col sm:flex-row flex-wrap gap-3 pt-2">
+                            <button class="bg-[#FF8C00] text-white px-6 py-3 rounded-xl font-semibold text-base hover:bg-[#FF8C00]/90 transition shadow-lg">
+                                Payez maintenant
+                            </button>
+                            <button class="bg-white text-[#01548A] px-6 py-3 rounded-xl font-semibold text-base hover:bg-white/90 transition shadow-lg">
+                                Enregistrez une maison
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Phone Mockups Slide 3 -->
+                    <div class="absolute right-4 md:right-16 top-12 md:top-16 flex gap-3 md:gap-6 hidden md:flex">
+                        <div class="w-[200px] md:w-[289px] h-[320px] md:h-[452px] rounded-[40px] md:rounded-[60px] overflow-hidden border-[6px] border-[#ffff] p-2">
+                            <img src="Images/Banner10.png" alt="Phone mockup 5" class="w-full h-full object-cover rounded-[32px] md:rounded-[52px]">
+                        </div>
+                        <div class="w-[190px] md:w-[280px] h-[310px] md:h-[443px] rounded-[40px] md:rounded-[60px] overflow-hidden border-[6px] border-[#FFFF] p-2 mt-8 md:mt-12">
+                            <img src="Images/Banner61.png" alt="Phone mockup 6" class="w-full h-full object-cover rounded-[32px] md:rounded-[52px]">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Carousel Indicators -->
+            <div class="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 flex gap-3 md:gap-5 z-20">
+                <button class="carousel-indicator w-2.5 h-2.5 md:w-3 md:h-3 bg-white rounded-full transition-all duration-300 hover:scale-110 active-indicator" data-slide="0" aria-label="Slide 1"></button>
+                <button class="carousel-indicator w-2.5 h-2.5 md:w-3 md:h-3 bg-white/50 rounded-full transition-all duration-300 hover:scale-110" data-slide="1" aria-label="Slide 2"></button>
+                <button class="carousel-indicator w-2.5 h-2.5 md:w-3 md:h-3 bg-white/50 rounded-full transition-all duration-300 hover:scale-110" data-slide="2" aria-label="Slide 3"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Improved "What is FlashAppart" section responsive layout -->
+    <section class="container mx-auto px-4 mt-16 md:mt-24 max-w-7xl">
+        <div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
+            <!-- Left: Images -->
+            <div class="relative h-[400px] md:h-[500px] lg:h-auto">
+                <div class="relative">
+                    <img src="Images/Flas.png" alt="Property" class="rounded-[20px] w-[200px] md:w-[267px] h-[350px] md:h-[474px] object-cover">
+                    <div class="absolute top-5 md:top-7 left-3 md:left-4 w-[194px] md:w-[261px] h-[340px] md:h-[460px] border border-accent rounded-[20px]"></div>
+                </div>
+                
+                <div class="absolute top-0 left-[220px] md:left-[298px] space-y-3 md:space-y-4">
+                    <div class="bg-accent rounded-[20px] w-[150px] md:w-[282px] h-[90px] md:h-[127px] flex items-center justify-center px-4 md:px-6">
+                        <div class="text-white font-jakarta">
+                            <div class="text-2xl md:text-5xl font-bold leading-tight">+25</div>
+                        </div>
+                        <div class="text-white text-sm md:text-lg font-jakarta font-semibold ml-2 md:ml-4 leading-5 md:leading-7">
+                            Agences<br>immobilières
+                        </div>
+                    </div>
+                    <img src="Images/Fla2.png" alt="Property 2" class="rounded-[20px] w-[150px] md:w-[282px] h-[250px] md:h-[339px] object-cover">
+                </div>
+            </div>
+            
+            <!-- Right: Content -->
+            <div class="max-w-4xl mx-auto mt-8 lg:mt-0">
+                <div class="space-y-8 md:space-y-11">
+                    <h2 class="text-gray-900 text-4xl md:text-5xl font-normal leading-tight">
+                        C'est quoi FlashAppart ?
+                    </h2>
+                
+                    <div class="space-y-4 md:space-y-5">
+                        <!-- Accordéon Item 1 -->
+                        <div class="bg-gray-900/5 rounded-[20px] overflow-hidden">
+                            <button 
+                                class="w-full p-4 md:p-5 flex items-start justify-between gap-4 text-left hover:bg-gray-900/10 transition-colors"
+                                onclick="toggleAccordion(this)"
+                            >
+                                <div class="space-y-1 flex-1">
+                                    <h3 class="text-gray-900 text-lg md:text-xl font-semibold leading-snug">
+                                        Payez vite, gérez simplement.
+                                    </h3>
+                                    <div class="bg-gray-900"></div>
+                                </div>
+                                <span class="accordion-icon text-gray-900 text-2xl font-light mt-1 flex-shrink-0">−</span>
+                            </button>
+                            <div class="accordion-content active">
+                                <div class="px-4 md:px-5 pb-4 md:pb-5">
+                                    <p class="text-gray-900 text-sm md:text-base leading-relaxed">
+                                        FlashAppart est une plateforme béninoise qui permet aux locataires de payer leur loyer en ligne (MoMo/carte) et de recevoir un reçu instantané, tout en offrant aux agences un suivi des paiements et des retraits sécurisés.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <!-- Accordéon Item 2 -->
+                        <div class="bg-gray-900/5 rounded-[20px] overflow-hidden">
+                            <button 
+                                class="w-full p-4 md:p-5 flex items-start justify-between gap-4 text-left hover:bg-gray-900/10 transition-colors"
+                                onclick="toggleAccordion(this)"
+                            >
+                                <div class="space-y-1 flex-1">
+                                    <h3 class="text-gray-900 text-lg md:text-xl font-semibold leading-snug">
+                                        Accessible à Locataire et aux Agences Immobilières
+                                    </h3>
+                                    <div class="bg-gray-900"></div>
+                                </div>
+                                <span class="accordion-icon text-gray-900 text-2xl font-light mt-1 flex-shrink-0">+</span>
+                            </button>
+                            <div class="accordion-content">
+                                <div class="px-4 md:px-5 pb-4 md:pb-5">
+                                    <p class="text-gray-900 text-sm md:text-base leading-relaxed">
+                                        Que vous soyez locataire ou agence immobilière, FlashAppart s'adapte à vos besoins. Les locataires peuvent payer facilement leur loyer à tout moment, tandis que les agences bénéficient d'un tableau de bord complet pour suivre tous les paiements en temps réel.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Improved advantages section responsive grid -->
+    <section class="container mx-auto px-4 mt-20 md:mt-32 max-w-7xl">
+        <h2 class="text-center text-3xl md:text-5xl leading-tight mb-10 md:mb-16 px-4">
+            <span class="text-dark font-normal">Les </span>
+            <span class="text-[#024E80] font-normal">Avantages Principales</span>
+            <span class="text-dark font-normal">,<br> pour les locataires</span>
+        </h2>
+        
+        <div class="grid sm:grid-cols-2 gap-4 md:gap-6">
+            <!-- Card 1 -->
+            <div class="bg-primary rounded-[20px] md:rounded-[30px] p-6 md:p-12 relative overflow-hidden min-h-[220px] md:min-h-[261px]">
+            <div class="relative z-10">
+                <p class="text-white text-xl md:text-2xl font-thin mb-2 md:mb-3">Fin</p>
+                <h3 class="text-white text-2xl md:text-[32px] font-semibold leading-tight max-w-[280px] md:max-w-[341px]">
+                Des déplacements et de la perte de temps
+                </h3>
+            </div>
+
+            <!-- Icône -->
+            <div
+                class="absolute right-4 bottom-4 md:bottom-auto md:right-12 md:top-8 bg-primary rounded-[15px] md:rounded-[20px] w-[100px] md:w-[224px] h-[90px] md:h-[195px] flex items-center justify-center"
+            >
+                <img
+                src="Images/img_clock-B6w5g3i9 1.png"
+                alt="Icon"
+                class="w-[70px] md:w-[134px] h-[65px] md:h-[125px]"
+                >
+            </div>
+            </div>
+
+            
+            <!-- Card 2 -->
+            <div class="bg-primary rounded-[20px] md:rounded-[30px] p-6 md:p-12 relative overflow-hidden min-h-[220px] md:min-h-[261px]">
+                <div class="relative z-10">
+                    <p class="text-white text-xl md:text-2xl font-thin mb-2 md:mb-3">Avoir une</p>
+                    <h3 class="text-white text-2xl md:text-[32px] font-semibold leading-tight max-w-[280px] md:max-w-[376px]">
+                        Transparence et commodité des Paiements Locaux
+                    </h3>
+                </div>
+                <div class="absolute right-4 bottom-4 md:bottom-auto md:right-12 md:top-8 bg-primary rounded-[15px] md:rounded-[20px] w-[100px] md:w-[224px] h-[90px] md:h-[195px] flex items-center justify-center">
+                    <img src="Images/img_declare-U9eFRpkS 1.png" alt="Icon" class="w-[75px] md:w-[123px] h-[75px] md:h-[125px]">
+                </div>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="bg-primary rounded-[20px] md:rounded-[30px] p-6 md:p-12 relative overflow-hidden min-h-[220px] md:min-h-[261px]">
+                <div class="relative z-10">
+                    <p class="text-white text-xl md:text-2xl font-thin mb-4 md:mb-6">En quelques clics,</p>
+                    <h3 class="text-white text-2xl md:text-[32px] font-semibold leading-tight max-w-[280px] md:max-w-[341px]">
+                        Reçu Instantané et Sécurisé
+                    </h3>
+                </div>
+                <div class="absolute right-4 bottom-4 md:bottom-auto md:right-12 md:top-8 bg-primary rounded-[15px] md:rounded-[20px] w-[100px] md:w-[224px] h-[90px] md:h-[195px] flex items-center justify-center">
+                    <img src="Images/img_contract-D2T3neb6 1.png" alt="Icon" class="w-[70px] md:w-[116px] h-[75px] md:h-[125px]">
+                </div>
+            </div>
+            
+            <!-- Card 4 -->
+            <div class="bg-primary rounded-[20px] md:rounded-[30px] p-6 md:p-12 relative overflow-hidden min-h-[220px] md:min-h-[261px]">
+                <div class="relative z-10">
+                    <p class="text-white text-xl md:text-2xl font-thin mb-2 md:mb-3">Facilite</p>
+                    <h3 class="text-white text-2xl md:text-[32px] font-semibold leading-tight max-w-[300px] md:max-w-[424px]">
+                        Recherche  et téléchargement  rapide des reçus
+                    </h3>
+                </div>
+                <div class="absolute right-4 bottom-4 md:bottom-auto md:right-12 md:top-8 bg-primary rounded-[15px] md:rounded-[20px] w-[100px] md:w-[224px] h-[90px] md:h-[195px] flex items-center justify-center">
+                    <img src="Images/img_downloadAttest--VxsGiyw 1.png" alt="Icon" class="w-[120px] md:w-[199px] h-[150px] md:h-[250px]">
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex justify-center md:justify-end mt-6 md:mt-8">
+            <a href="rechercher_maison.html" class="bg-secondary text-white px-4 md:px-6 py-4 md:py-4 rounded-[10px] font-poppins font-semibold text-[20px] hover:bg-secondary/90 transition w-auto sm:w-auto">
+                Payez votre loyer
+            </a>
+        </div>
+    </section>
+
+    <!-- Improved CTA section responsive layout -->
+    <section class="container mx-auto px-4 mt-16 md:mt-24 max-w-7xl">
+        <div class="relative">
+            <div class="bg-[#d9d9d9] rounded-[20px] md:rounded-[30px] pt-20 md:pt-36 pb-12 md:pb-20 px-6 md:px-16 relative overflow-hidden">
+                <img src="Images/Sans titre-1.png" alt="Agent" class="absolute left-0 md:left-7 -top-0 w-[250px] md:w-[600px] h-[250px] md:h-[591px] object-contain opacity-30 md:opacity-100">
+                
+                <div class="ml-auto max-w-full md:max-w-[525px] relative z-10 md:left-6">
+                    <h2 class="text-black text-2xl md:text-[32px] font-extrabold leading-tight mb-6 md:mb-8">
+                        Transformez l'incertitude en sécurité dès aujourd'hui !
+                    </h2>
+                    <p class="text-black text-lg md:text-2xl font-normal leading-relaxed mb-8 md:mb-12">
+                        Obtenez votre devis personnalisé en quelques instants et prenez la décision qui vous offre la tranquillité d'esprit. N'attendez pas l'imprévu.
+                    </p>
+                    <button class="bg-primary text-white px-8 md:px-8 py-4 md:py-4 rounded-[10px] font-poppins font-semibold text-[20px] hover:bg-primary/90 transition w-full sm:w-auto">
+                        Enregistrer une maison
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Improved partners section responsive layout -->
+    <section class="container mx-auto px-4 mt-16 md:mt-24 max-w-7xl">
+        <div class="space-y-6 md:space-y-8">
+            <div class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
+                <h3 class="text-dark text-base md:text-lg font-bold leading-relaxed">Découvrez nos<br>Partenaires :</h3>
+                <div class="flex items-center gap-6 md:gap-10 flex-wrap">
+                    <img src="Images/Rectangle 132.png" alt="Partner 1" class="h-[45px] md:h-[67px]">
+                    <img src="Images/download 2.png" alt="Partner 2" class="h-[48px] md:h-[72px]">
+                    <img src="Images/download 3.png" alt="Partner 3" class="h-[70px] md:h-[107px]">
+                    <img src="Images/download 4.png" alt="Partner 4" class="h-[84px] md:h-[126px]">
+                    <img src="Images/download 5.png" alt="Partner 5" class="h-[78px] md:h-[117px]">
+                    <img src="Images/download 3.png" alt="Partner 6" class="h-[70px] md:h-[107px]">
+                    <img src="Images/download 5.png" alt="Partner 5" class="h-[78px] md:h-[117px]">
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-6 md:gap-10 flex-wrap">
+                <img src="Images/download 2.png" alt="Partner 8" class="h-[48px] md:h-[72px]">
+                <img src="Images/Rectangle 132.png" alt="Partner 9" class="h-[45px] md:h-[67px]">
+                <img src="Images/download 2.png" alt="Partner 10" class="h-[48px] md:h-[72px]">
+                <img src="Images/download 3.png" alt="Partner 11" class="h-[70px] md:h-[107px]">
+                <img src="Images/download 4.png" alt="Partner 12" class="h-[84px] md:h-[126px]">
+                <img src="Images/download 5.png" alt="Partner 13" class="h-[78px] md:h-[117px]">
+                <img src="Images/download 3.png" alt="Partner 14" class="h-[70px] md:h-[107px]">
+            </div>
+        </div>
+    </section>
+
+   <!-- Improved FAQ section responsive layout -->
+    <section class="bg-[#eef3f7] py-16 md:py-24">
+        <div class="container mx-auto px-4 max-w-7xl">
+            <h2 class="text-center text-4xl md:text-5xl mb-12 md:mb-16">
+                <span class="text-primary font-normal">Questions</span>
+                <span class="text-black font-normal"> fréquemment posées.</span>
+            </h2>
+            
+            <div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+                <!-- FAQ Items Column -->
+                <div class="space-y-6 md:space-y-10">
+                    <!-- FAQ Item 1 -->
+                    <div class="bg-white rounded-[5px] shadow-[0_25px_33px_-15px_rgba(148,148,148,0.25)] overflow-hidden">
+                        <div class="p-6 md:p-8 relative">
+                            <h3 class="text-black text-lg md:text-xl font-poppins font-semibold leading-relaxed pr-10 md:pr-12">
+                                Quels sont les étapes afin de faire payez mon loyer?
+                            </h3>
+                            <button 
+                                onclick="toggleFaq(this)"
+                                class="faq-button absolute top-6 md:top-8 right-6 md:right-8 w-6 h-6 bg-secondary rounded-full flex items-center justify-center text-white font-poppins font-semibold text-lg hover:bg-secondary/90"
+                            >
+                                +
+                            </button>
+                        </div>
+                        <div class="faq-content">
+                            <div class="px-6 md:px-8 pb-6 md:pb-8">
+                                <p class="text-gray-700 text-sm md:text-base leading-relaxed">
+                                    En tant qu'agence immobilière, vous pouvez enregistrer vos propriétés facilement : <br>
+                                    <strong>1-</strong> Accédez à votre tableau de bord agence <br>
+                                    <strong>2-</strong> Cliquez sur "Ajouter une propriété" <br>
+                                    <strong>3-</strong> Remplissez les informations du logement (adresse, loyer, caractéristiques) <br>
+                                    <strong>4-</strong> Ajoutez les informations du locataire <br>
+                                    <strong>5-</strong> Validez l'enregistrement. Le locataire recevra un lien pour activer son compte.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="bg-white rounded-[5px] shadow-[0_25px_33px_-15px_rgba(148,148,148,0.25)] overflow-hidden">
+                        <div class="p-6 md:p-8 relative">
+                            <h3 class="text-black text-lg md:text-xl font-poppins font-semibold leading-relaxed pr-10 md:pr-12">
+                                Comment rechercher un reçu?
+                            </h3>
+                            <button 
+                                onclick="toggleFaq(this)"
+                                class="faq-button absolute top-6 md:top-8 right-6 md:right-8 w-6 h-6 bg-secondary rounded-full flex items-center justify-center text-white font-poppins font-semibold text-lg hover:bg-secondary/90"
+                            >
+                                +
+                            </button>
+                        </div>
+                        <div class="faq-content">
+                            <div class="px-6 md:px-8 pb-6 md:pb-8">
+                                <p class="text-gray-700 text-sm md:text-base leading-relaxed">
+                                    Tous vos reçus sont accessibles depuis votre espace personnel : <br>
+                                    <strong>1-</strong> Connectez-vous à votre compte <br>
+                                    <strong>2-</strong> Allez dans la section "Historique des paiements" <br>
+                                    <strong>3-</strong> Utilisez les filtres par date, montant ou période <br>
+                                    <strong>4-</strong> Cliquez sur le reçu souhaité pour le consulter ou le télécharger au format PDF. <br>
+                                    Vous pouvez également recevoir vos reçus automatiquement par email après chaque paiement.<br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 3 -->
+                    <div class="bg-white rounded-[5px] shadow-[0_25px_33px_-15px_rgba(148,148,148,0.25)] overflow-hidden">
+                        <div class="p-6 md:p-8 relative">
+                            <h3 class="text-black text-lg md:text-xl font-poppins font-semibold leading-relaxed pr-10 md:pr-12">
+                                Quels sont les étapes à suivre pour enregistrer une maison en tant qu'agence?
+                            </h3>
+                            <button 
+                                onclick="toggleFaq(this)"
+                                class="faq-button absolute top-6 md:top-8 right-6 md:right-8 w-6 h-6 bg-secondary rounded-full flex items-center justify-center text-white font-poppins font-semibold text-lg hover:bg-secondary/90"
+                            >
+                                +
+                            </button>
+                        </div>
+                        <div class="faq-content">
+                            <div class="px-6 md:px-8 pb-6 md:pb-8">
+                                <p class="text-gray-700 text-sm md:text-base leading-relaxed">
+                                    En tant qu'agence immobilière, vous pouvez enregistrer vos propriétés facilement : <br>
+                                    <strong>1-</strong> Accédez à votre tableau de bord agence <br>
+                                    <strong>2-</strong> Cliquez sur "Ajouter une propriété" <br>
+                                    <strong>3-</strong> Remplissez les informations du logement (adresse, loyer, caractéristiques) <br>
+                                    <strong>4-</strong> Ajoutez les informations du locataire <br>
+                                    <strong>5-</strong> Validez l'enregistrement. Le locataire recevra un lien pour activer son compte.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 4 -->
+                    <div class="bg-white rounded-[5px] shadow-[0_25px_33px_-15px_rgba(148,148,148,0.25)] overflow-hidden">
+                        <div class="p-6 md:p-8 relative">
+                            <h3 class="text-black text-lg md:text-xl font-poppins font-semibold leading-relaxed pr-10 md:pr-12">
+                                Comment être partenaire immobilier?
+                            </h3>
+                            <button 
+                                onclick="toggleFaq(this)"
+                                class="faq-button absolute top-6 md:top-8 right-6 md:right-8 w-6 h-6 bg-secondary rounded-full flex items-center justify-center text-white font-poppins font-semibold text-lg hover:bg-secondary/90"
+                            >
+                                +
+                            </button>
+                        </div>
+                        <div class="faq-content">
+                            <div class="px-6 md:px-8 pb-6 md:pb-8">
+                                <p class="text-gray-700 text-sm md:text-base leading-relaxed">
+                                    Devenir partenaire FlashAppart est simple et gratuit :<br>
+                                    <strong>1-</strong> Remplissez le formulaire d'inscription agence sur notre site <br>
+                                    <strong>2-</strong> Fournissez vos documents d'identification et d'enregistrement <br>
+                                    <strong>3-</strong> Notre équipe vérifiera votre dossier sous 48h <br>
+                                    <strong>4-</strong> Une fois validé, accédez à votre tableau de bord et commencez à gérer vos propriétés. <br>
+                                    Profitez d'une commission attractive et d'un suivi en temps réel de tous vos paiements !
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Question Mark Illustration Column -->
+                <div class="hidden lg:flex items-center justify-center h-full">
+                    <div class="relative flex items-center justify-center">
+                        <img src="Images/Vector 2.png" alt="Question mark illustration">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Improved testimonials section with mobile responsive carousel -->
+    <section class="container mx-auto px-4 py-16 md:py-24 max-w-7xl">
+        <h2 class="text-center text-3xl md:text-5xl font-normal text-black mb-12 md:mb-16">Avis</h2>
+        
+        <div class="relative overflow-hidden">
+            <div class="testimonials-container">
+                <!-- Testimonial Set 1 -->
+                <div class="testimonial-set grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-white rounded-[10px] border border-[#E5E5E5] shadow-[0_2px_8px_rgba(0,0,0,0.1)] p-6 md:p-8">
+                        <div class="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
+                            <img src="https://placehold.co/80x72?text=Avatar" alt="Kevin Duncan" class="w-16 md:w-20 h-14 md:h-[72px] rounded-full object-cover">
+                            <div class="flex-1">
+                                <h3 class="text-black text-base md:text-lg font-bold mb-1">Kevin Duncan</h3>
+                                <p class="text-primary text-xs md:text-[13px] font-light mb-2">Designer à Belle Agency</p>
+                                <div class="flex items-center gap-2">
+                                    <div class="flex gap-1">
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                    </div>
+                                    <span class="text-black text-xs md:text-[13px] font-medium">5.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="border-[#E5E5E5] mb-4 md:mb-5">
+                        <div class="relative">
+                            <div class="absolute -top-1 left-0">
+                                <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.49993 2.67101V0C2.91589 0 0 2.61041 0 5.81905V11.6381H6.49993V5.81905H2.98358C2.98358 4.08329 4.56105 2.67101 6.49993 2.67101Z" fill="#3364CA"/>
+                                    <path d="M14.5725 2.67101V0C10.9884 0 8.07252 2.61041 8.07252 5.81905V11.6381H14.5725V5.81905H11.0562C11.0562 4.08329 12.6336 2.67101 14.5725 2.67101Z" fill="#3364CA"/>
+                                </svg>
+                            </div>
+                            <p class="text-black text-base md:text-lg font-light leading-relaxed mb-4 md:mb-6 pl-6">
+                                FlashAppart a complètement transformé ma façon de payer mon loyer. Plus besoin de me déplacer, tout se fait en ligne de manière sécurisée. Je recommande vivement cette plateforme innovante !
+                            </p>
+                        </div>
+                        <p class="text-[#FF8C00] text-xs md:text-[13px] font-normal">15.05.2024</p>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="bg-white rounded-[10px] border border-[#E5E5E5] shadow-[0_2px_8px_rgba(0,0,0,0.1)] p-6 md:p-8">
+                        <div class="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
+                            <img src="https://placehold.co/79x68?text=Avatar" alt="Robert L." class="w-16 md:w-[79px] h-14 md:h-[68px] rounded-full object-cover">
+                            <div class="flex-1">
+                                <h3 class="text-black text-base md:text-lg font-bold mb-1">Robert L.</h3>
+                                <p class="text-primary text-xs md:text-[13px] font-light mb-2">CM à Davidson Group</p>
+                                <div class="flex items-center gap-2">
+                                    <div class="flex gap-1">
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                    </div>
+                                    <span class="text-black text-xs md:text-[13px] font-medium">5.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="border-[#E5E5E5] mb-4 md:mb-5">
+                        <div class="relative">
+                            <div class="absolute -top-1 left-0">
+                                <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.49993 2.67101V0C2.91589 0 0 2.61041 0 5.81905V11.6381H6.49993V5.81905H2.98358C2.98358 4.08329 4.56105 2.67101 6.49993 2.67101Z" fill="#3364CA"/>
+                                    <path d="M14.5725 2.67101V0C10.9884 0 8.07252 2.61041 8.07252 5.81905V11.6381H14.5725V5.81905H11.0562C11.0562 4.08329 12.6336 2.67101 14.5725 2.67101Z" fill="#3364CA"/>
+                                </svg>
+                            </div>
+                            <p class="text-black text-base md:text-lg font-light leading-relaxed mb-4 md:mb-6 pl-6">
+                                En tant qu'agence immobilière, FlashAppart nous permet de suivre tous nos paiements en temps réel. Le tableau de bord est intuitif et nos clients apprécient la simplicité du processus.
+                            </p>
+                        </div>
+                        <p class="text-[#FF8C00] text-xs md:text-[13px] font-normal">20.06.2024</p>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="bg-white rounded-[10px] border border-[#E5E5E5] shadow-[0_2px_8px_rgba(0,0,0,0.1)] p-6 md:p-8">
+                        <div class="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
+                            <img src="https://placehold.co/78x68?text=Avatar" alt="Jacobe Jackson" class="w-16 md:w-[78px] h-14 md:h-[68px] rounded-full object-cover">
+                            <div class="flex-1">
+                                <h3 class="text-black text-base md:text-lg font-bold mb-1">Jacobe Jackson</h3>
+                                <p class="text-primary text-xs md:text-[13px] font-light mb-2">Développeur à VIM Code</p>
+                                <div class="flex items-center gap-2">
+                                    <div class="flex gap-1">
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                    </div>
+                                    <span class="text-black text-xs md:text-[13px] font-medium">5.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="border-[#E5E5E5] mb-4 md:mb-5">
+                        <div class="relative">
+                            <div class="absolute -top-1 left-0">
+                                <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.49993 2.67101V0C2.91589 0 0 2.61041 0 5.81905V11.6381H6.49993V5.81905H2.98358C2.98358 4.08329 4.56105 2.67101 6.49993 2.67101Z" fill="#3364CA"/>
+                                    <path d="M14.5725 2.67101V0C10.9884 0 8.07252 2.61041 8.07252 5.81905V11.6381H14.5725V5.81905H11.0562C11.0562 4.08329 12.6336 2.67101 14.5725 2.67101Z" fill="#3364CA"/>
+                                </svg>
+                            </div>
+                            <p class="text-black text-base md:text-lg font-light leading-relaxed mb-4 md:mb-6 pl-6">
+                                Interface utilisateur excellente ! Les reçus sont générés instantanément et je peux facilement retrouver mon historique de paiements. Une solution moderne et efficace pour le Bénin.
+                            </p>
+                        </div>
+                        <p class="text-[#FF8C00] text-xs md:text-[13px] font-normal">12.07.2024</p>
+                    </div>
+                </div>
+                
+                <!-- Testimonial Set 2 -->
+                <div class="testimonial-set grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                    <!-- Testimonial 4 -->
+                    <div class="bg-white rounded-[10px] border border-[#E5E5E5] shadow-[0_2px_8px_rgba(0,0,0,0.1)] p-6 md:p-8">
+                        <div class="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
+                            <img src="https://placehold.co/80x72?text=Avatar" alt="Marie Kouassi" class="w-16 md:w-20 h-14 md:h-[72px] rounded-full object-cover">
+                            <div class="flex-1">
+                                <h3 class="text-black text-base md:text-lg font-bold mb-1">Marie Kouassi</h3>
+                                <p class="text-primary text-xs md:text-[13px] font-light mb-2">Gestionnaire chez ProImmo</p>
+                                <div class="flex items-center gap-2">
+                                    <div class="flex gap-1">
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                    </div>
+                                    <span class="text-black text-xs md:text-[13px] font-medium">5.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="border-[#E5E5E5] mb-4 md:mb-5">
+                        <div class="relative">
+                            <div class="absolute -top-1 left-0">
+                                <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.49993 2.67101V0C2.91589 0 0 2.61041 0 5.81905V11.6381H6.49993V5.81905H2.98358C2.98358 4.08329 4.56105 2.67101 6.49993 2.67101Z" fill="#3364CA"/>
+                                    <path d="M14.5725 2.67101V0C10.9884 0 8.07252 2.61041 8.07252 5.81905V11.6381H14.5725V5.81905H11.0562C11.0562 4.08329 12.6336 2.67101 14.5725 2.67101Z" fill="#3364CA"/>
+                                </svg>
+                            </div>
+                            <p class="text-black text-base md:text-lg font-light leading-relaxed mb-4 md:mb-6 pl-6">
+                                La gestion de nos propriétés n'a jamais été aussi simple. FlashAppart nous fait gagner un temps précieux et réduit considérablement les retards de paiement. Excellente initiative !
+                            </p>
+                        </div>
+                        <p class="text-[#FF8C00] text-xs md:text-[13px] font-normal">03.08.2024</p>
+                    </div>
+                    
+                    <!-- Testimonial 5 -->
+                    <div class="bg-white rounded-[10px] border border-[#E5E5E5] shadow-[0_2px_8px_rgba(0,0,0,0.1)] p-6 md:p-8">
+                        <div class="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
+                            <img src="https://placehold.co/79x68?text=Avatar" alt="Pierre Amoussou" class="w-16 md:w-[79px] h-14 md:h-[68px] rounded-full object-cover">
+                            <div class="flex-1">
+                                <h3 class="text-black text-base md:text-lg font-bold mb-1">Pierre Amoussou</h3>
+                                <p class="text-primary text-xs md:text-[13px] font-light mb-2">Entrepreneur</p>
+                                <div class="flex items-center gap-2">
+                                    <div class="flex gap-1">
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                    </div>
+                                    <span class="text-black text-xs md:text-[13px] font-medium">5.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="border-[#E5E5E5] mb-4 md:mb-5">
+                        <div class="relative">
+                            <div class="absolute -top-1 left-0">
+                                <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.49993 2.67101V0C2.91589 0 0 2.61041 0 5.81905V11.6381H6.49993V5.81905H2.98358C2.98358 4.08329 4.56105 2.67101 6.49993 2.67101Z" fill="#3364CA"/>
+                                    <path d="M14.5725 2.67101V0C10.9884 0 8.07252 2.61041 8.07252 5.81905V11.6381H14.5725V5.81905H11.0562C11.0562 4.08329 12.6336 2.67101 14.5725 2.67101Z" fill="#3364CA"/>
+                                </svg>
+                            </div>
+                            <p class="text-black text-base md:text-lg font-light leading-relaxed mb-4 md:mb-6 pl-6">
+                                Service client au top ! J'ai eu besoin d'aide pour mon premier paiement et l'équipe a été très réactive. La plateforme est sécurisée et facile à utiliser. Bravo!
+                            </p>
+                        </div>
+                        <p class="text-[#FF8C00] text-xs md:text-[13px] font-normal">18.09.2024</p>
+                    </div>
+                    
+                    <!-- Testimonial 6 -->
+                    <div class="bg-white rounded-[10px] border border-[#E5E5E5] shadow-[0_2px_8px_rgba(0,0,0,0.1)] p-6 md:p-8">
+                        <div class="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
+                            <img src="https://placehold.co/78x68?text=Avatar" alt="Sarah Dossou" class="w-16 md:w-[78px] h-14 md:h-[68px] rounded-full object-cover">
+                            <div class="flex-1">
+                                <h3 class="text-black text-base md:text-lg font-bold mb-1">Sarah Dossou</h3>
+                                <p class="text-primary text-xs md:text-[13px] font-light mb-2">Enseignante</p>
+                                <div class="flex items-center gap-2">
+                                    <div class="flex gap-1">
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                    </div>
+                                    <span class="text-black text-xs md:text-[13px] font-medium">5.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="border-[#E5E5E5] mb-4 md:mb-5">
+                        <div class="relative">
+                            <div class="absolute -top-1 left-0">
+                                <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.49993 2.67101V0C2.91589 0 0 2.61041 0 5.81905V11.6381H6.49993V5.81905H2.98358C2.98358 4.08329 4.56105 2.67101 6.49993 2.67101Z" fill="#3364CA"/>
+                                    <path d="M14.5725 2.67101V0C10.9884 0 8.07252 2.61041 8.07252 5.81905V11.6381H14.5725V5.81905H11.0562C11.0562 4.08329 12.6336 2.67101 14.5725 2.67101Z" fill="#3364CA"/>
+                                </svg>
+                            </div>
+                            <p class="text-black text-base md:text-lg font-light leading-relaxed mb-4 md:mb-6 pl-6">
+                                Enfin une solution adaptée au contexte béninois ! Je peux payer avec mon compte MoMo et garder tous mes reçus en ligne. C'est pratique et rassurant. Je recommande à tous mes collègues.
+                            </p>
+                        </div>
+                        <p class="text-[#FF8C00] text-xs md:text-[13px] font-normal">25.09.2024</p>
+                    </div>
+                </div>
+                
+                <!-- Testimonial Set 3 -->
+                <div class="testimonial-set grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                    <!-- Testimonial 7 -->
+                    <div class="bg-white rounded-[10px] border border-[#E5E5E5] shadow-[0_2px_8px_rgba(0,0,0,0.1)] p-6 md:p-8">
+                        <div class="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
+                            <img src="https://placehold.co/80x72?text=Avatar" alt="Jean-Claude Hounvi" class="w-16 md:w-20 h-14 md:h-[72px] rounded-full object-cover">
+                            <div class="flex-1">
+                                <h3 class="text-black text-base md:text-lg font-bold mb-1">Jean-Claude Hounvi</h3>
+                                <p class="text-primary text-xs md:text-[13px] font-light mb-2">Directeur Agence Elite</p>
+                                <div class="flex items-center gap-2">
+                                    <div class="flex gap-1">
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                    </div>
+                                    <span class="text-black text-xs md:text-[13px] font-medium">5.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="border-[#E5E5E5] mb-4 md:mb-5">
+                        <div class="relative">
+                            <div class="absolute -top-1 left-0">
+                                <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.49993 2.67101V0C2.91589 0 0 2.61041 0 5.81905V11.6381H6.49993V5.81905H2.98358C2.98358 4.08329 4.56105 2.67101 6.49993 2.67101Z" fill="#3364CA"/>
+                                    <path d="M14.5725 2.67101V0C10.9884 0 8.07252 2.61041 8.07252 5.81905V11.6381H14.5725V5.81905H11.0562C11.0562 4.08329 12.6336 2.67101 14.5725 2.67101Z" fill="#3364CA"/>
+                                </svg>
+                            </div>
+                            <p class="text-black text-bade md:text-lg font-light leading-relaxed mb-4 md:mb-6 pl-6">
+                                FlashAppart a digitalisé notre gestion locative. Les retraits sont rapides et sécurisés. Nos clients sont satisfaits et nous aussi. Un partenariat gagnant-gagnant !
+                            </p>
+                        </div>
+                        <p class="text-[#FF8C00] text-xs md:text-[13px] font-normal">05.10.2024</p>
+                    </div>
+                    
+                    <!-- Testimonial 8 -->
+                    <div class="bg-white rounded-[10px] border border-[#E5E5E5] shadow-[0_2px_8px_rgba(0,0,0,0.1)] p-6 md:p-8">
+                        <div class="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
+                            <img src="https://placehold.co/79x68?text=Avatar" alt="Fatima Alassane" class="w-16 md:w-[79px] h-14 md:h-[68px] rounded-full object-cover">
+                            <div class="flex-1">
+                                <h3 class="text-black text-base md:text-lg font-bold mb-1">Fatima Alassane</h3>
+                                <p class="text-primary text-xs md:text-[13px] font-light mb-2">Étudiante</p>
+                                <div class="flex items-center gap-2">
+                                    <div class="flex gap-1">
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                    </div>
+                                    <span class="text-black text-xs md:text-[13px] font-medium">5.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="border-[#E5E5E5] mb-4 md:mb-5">
+                        <div class="relative">
+                            <div class="absolute -top-1 left-0">
+                                <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.49993 2.67101V0C2.91589 0 0 2.61041 0 5.81905V11.6381H6.49993V5.81905H2.98358C2.98358 4.08329 4.56105 2.67101 6.49993 2.67101Z" fill="#3364CA"/>
+                                    <path d="M14.5725 2.67101V0C10.9884 0 8.07252 2.61041 8.07252 5.81905V11.6381H14.5725V5.81905H11.0562C11.0562 4.08329 12.6336 2.67101 14.5725 2.67101Z" fill="#3364CA"/>
+                                </svg>
+                            </div>
+                            <p class="text-black text-base md:text-lg font-light leading-relaxed mb-4 md:mb-6 pl-6">
+                                Super pratique pour les étudiants ! Je peux payer mon loyer depuis mon téléphone en quelques minutes. Mes parents apprécient aussi de pouvoir m'aider directement en ligne. Génial !
+                            </p>
+                        </div>
+                        <p class="text-[#FF8C00] text-xs md:text-[13px] font-normal">14.10.2024</p>
+                    </div>
+                    
+                    <!-- Testimonial 9 -->
+                    <div class="bg-white rounded-[10px] border border-[#E5E5E5] shadow-[0_2px_8px_rgba(0,0,0,0.1)] p-6 md:p-8">
+                        <div class="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
+                            <img src="https://placehold.co/78x68?text=Avatar" alt="Rodrigue Ahonon" class="w-16 md:w-[78px] h-14 md:h-[68px] rounded-full object-cover">
+                            <div class="flex-1">
+                                <h3 class="text-black text-base md:text-lg font-bold mb-1">Rodrigue Ahonon</h3>
+                                <p class="text-primary text-xs md:text-[13px] font-light mb-2">Consultant</p>
+                                <div class="flex items-center gap-2">
+                                    <div class="flex gap-1">
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                        <span class="text-[#3364CA] text-sm md:text-base">★</span>
+                                    </div>
+                                    <span class="text-black text-xs md:text-[13px] font-medium">5.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="border-[#E5E5E5] mb-4 md:mb-5">
+                        <div class="relative">
+                            <div class="absolute -top-1 left-0">
+                                <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.49993 2.67101V0C2.91589 0 0 2.61041 0 5.81905V11.6381H6.49993V5.81905H2.98358C2.98358 4.08329 4.56105 2.67101 6.49993 2.67101Z" fill="#3364CA"/>
+                                    <path d="M14.5725 2.67101V0C10.9884 0 8.07252 2.61041 8.07252 5.81905V11.6381H14.5725V5.81905H11.0562C11.0562 4.08329 12.6336 2.67101 14.5725 2.67101Z" fill="#3364CA"/>
+                                </svg>
+                            </div>
+                            <p class="text-black text-base md:text-lg font-light leading-relaxed mb-4 md:mb-6 pl-6">
+                                La transparence des transactions me rassure totalement. J'ai accès à tout mon historique et je peux télécharger mes reçus quand j'en ai besoin. FlashAppart, c'est l'avenir de l'immobilier au Bénin !
+                            </p>
+                        </div>
+                        <p class="text-[#FF8C00] text-xs md:text-[13px] font-normal">22.10.2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Carousel Indicators -->
+        <div class="flex justify-center gap-6 md:gap-8 mt-6 md:mt-8">
+            <button class="testimonial-dot w-4 h-4 md:w-5 md:h-5 bg-dark rounded-full transition-all duration-300 hover:scale-110" data-testimonial-slide="0" aria-label="Avis 1-3"></button>
+            <button class="testimonial-dot w-4 h-4 md:w-5 md:h-5 bg-dark/50 rounded-full transition-all duration-300 hover:scale-110" data-testimonial-slide="1" aria-label="Avis 4-6"></button>
+            <button class="testimonial-dot w-4 h-4 md:w-5 md:h-5 bg-dark/50 rounded-full transition-all duration-300 hover:scale-110" data-testimonial-slide="2" aria-label="Avis 7-9"></button>
+        </div>
+    </section>
+
+    <!-- Improved footer responsive layout -->
+    <footer class="bg-dark pt-12 md:pt-20 pb-0">
+        <div class="container mx-auto px-4 max-w-7xl">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-12 md:mb-16">
+                <!-- Logo -->
+                <div class="flex justify-center sm:justify-start -mt-8">
+                    <img src="Images/logo_footer.png" alt="FlashAppart Logo">
+                </div>
+                
+                <!-- About -->
+                <div>
+                    <h3 class="text-primary text-base md:text-lg font-bold mb-4 md:mb-6">À propos de nous</h3>
+                    <p class="text-white text-sm md:text-[15px] font-normal leading-relaxed">
+                        FlashAppart est une plateforme béninoise qui permet aux locataires de payer leur loyer en ligne (MoMo/carte) et de recevoir un reçu instantané, tout en offrant aux agences un suivi des paiements et des retraits sécurisés.
+                    </p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-primary text-base md:text-lg font-bold mb-4 md:mb-6">Accès rapide</h3>
+                    <ul class="text-[#878FA1] text-sm md:text-base font-light leading-relaxed space-y-2 md:space-y-3">
+                        <li><a href="index.html" class="hover:text-white transition">Aceuil</a></li>
+                        <li><a href="rechercher_maison.html" class="hover:text-white transition">Payez mon loyer</a></li>
+                        <li><a href="#" class="hover:text-white transition">Enregistrez ma maison</a></li>
+                        <li><a href="#" class="hover:text-white transition">À propos de nous</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h3 class="text-primary text-base md:text-lg font-bold mb-4 md:mb-6">Contacts</h3>
+                    <div class="text-[#878FA1] text-sm md:text-base font-light leading-relaxed space-y-3 md:space-y-4">
+                        <div>
+                            <p class="mb-1">Email</p>
+                            <p class="break-all">contact@flashappart.com</p>
+                        </div>
+                        <div>
+                            <p class="mb-1">Téléphone</p>
+                            <p>(+229) 00 00 00 00/ 00 00 00 00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Social Media -->
+            <div class="flex gap-4 md:gap-6 mb-16 md:mb-10 justify-center sm:justify-start md:-mt-[40px]">
+                <a href="#" class="w-6 h-6 md:w-7 md:h-7 transition"><img src="Images/facebook.png" alt="Facebook"></a>
+                <a href="#" class="w-7 h-6 md:w-9 md:h-7 transition"><img src="Images/Vector.png" alt="Twitter"></a>
+                <a href="#" class="w-6 h-6 md:w-7 md:h-7 transition"><img src="Images/linkedin.png" alt="LinkedIn"></a>
+                <a href="#" class="w-6 h-6 md:w-7 md:h-7 transition"><img src="Images/google.png" alt="Google"></a>
+                <a href="#" class="w-6 h-6 md:w-7 md:h-7 transition"><img src="Images/pinterest.png" alt="Pinterest"></a>
+            </div>
+        </div>
+        
+        <!-- Bottom Bar -->
+        <div class="bg-primary py-4 md:py-6">
+            <div class="container mx-auto px-4 max-w-7xl flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-white text-sm md:text-base font-medium text-center md:text-left">Copyright © <span id="year"></span>. Flash Appart, Touts droits réservés</p>
+                <div class="flex flex-wrap justify-center gap-4 md:gap-5 text-white/60 text-xs md:text-[15px] font-medium">
+                    <a href="#" class="hover:text-white transition">Aide</a>
+                    <a href="#" class="hover:text-white transition">Politique de confidentialité</a>
+                    <a href="#" class="hover:text-white transition">Politique d'utilisation</a>
+                    <a href="#" class="hover:text-white transition">Conditions d'abonnement</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    
+    <!-- Added mobile menu toggle function -->
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            mobileMenu.classList.toggle('active');
+        }
+    </script>
+    
+    <!-- Carousel functionality -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.carousel-indicator');
+        const totalSlides = slides.length;
+        let autoPlayInterval;
+
+        function showSlide(index) {
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+                slide.style.opacity = '0';
+            });
+            indicators.forEach(indicator => {
+                indicator.classList.remove('active-indicator');
+                indicator.style.backgroundColor = 'rgba(255, 255, 255, 0.5)';
+            });
+
+            slides[index].classList.add('active');
+            slides[index].style.opacity = '1';
+            indicators[index].classList.add('active-indicator');
+            indicators[index].style.backgroundColor = 'white';
+            
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            const next = (currentSlide + 1) % totalSlides;
+            showSlide(next);
+        }
+
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(nextSlide, 5000);
+        }
+
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                stopAutoPlay();
+                showSlide(index);
+                startAutoPlay();
+            });
+        });
+
+        const carouselContainer = document.querySelector('.carousel-container');
+        carouselContainer.addEventListener('mouseenter', stopAutoPlay);
+        carouselContainer.addEventListener('mouseleave', startAutoPlay);
+
+        showSlide(0);
+        startAutoPlay();
+    </script>
+
+    <script>
+        function toggleAccordion(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.accordion-icon');
+            const allContents = document.querySelectorAll('.accordion-content');
+            const allIcons = document.querySelectorAll('.accordion-icon');
+            
+            allContents.forEach((item, index) => {
+                if (item !== content && item.classList.contains('active')) {
+                    item.classList.remove('active');
+                    allIcons[index].textContent = '+';
+                }
+            });
+            
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                icon.textContent = '+';
+            } else {
+                content.classList.add('active');
+                icon.textContent = '−';
+            }
+        }
+    </script>
+
+    <script>
+        function toggleFaq(button) {
+            const faqItem = button.closest('.bg-white');
+            const content = faqItem.querySelector('.faq-content');
+            const allContents = document.querySelectorAll('.faq-content');
+            const allButtons = document.querySelectorAll('.faq-button');
+            
+            allContents.forEach((item) => {
+                if (item !== content && item.classList.contains('active')) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            allButtons.forEach((btn) => {
+                if (btn !== button && btn.classList.contains('active')) {
+                    btn.classList.remove('active');
+                    btn.textContent = '+';
+                }
+            });
+            
+            if (content.classList.contains('active')) {
+                content.classList.remove('active');
+                button.classList.remove('active');
+                button.textContent = '+';
+            } else {
+                content.classList.add('active');
+                button.classList.add('active');
+                button.textContent = '−';
+            }
+        }
+    </script>
+    
+    <!-- Enhanced testimonials carousel with mobile support -->
+    <script>
+        let currentTestimonialSlide = 0;
+        const testimonialsContainer = document.querySelector('.testimonials-container');
+        const testimonialDots = document.querySelectorAll('.testimonial-dot');
+        const totalTestimonialSlides = document.querySelectorAll('.testimonial-set').length;
+        
+        // Detect if mobile
+        function isMobile() {
+            return window.innerWidth < 768;
+        }
+
+        function showTestimonialSlide(index) {
+            const totalSlides = isMobile() ? 9 : 3; // 9 individual testimonials on mobile, 3 sets on desktop
+            const offset = -index * (100 / (isMobile() ? 9 : totalTestimonialSlides));
+            testimonialsContainer.style.transform = `translateX(${offset}%)`;
+            
+            testimonialDots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.add('active-dot');
+                    dot.style.backgroundColor = '#22252D';
+                } else {
+                    dot.classList.remove('active-dot');
+                    dot.style.backgroundColor = 'rgba(34, 37, 45, 0.5)';
+                }
+            });
+            
+            currentTestimonialSlide = index;
+        }
+
+        testimonialDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showTestimonialSlide(index);
+            });
+        });
+
+        showTestimonialSlide(0);
+        
+        // Reset on window resize
+        window.addEventListener('resize', () => {
+            showTestimonialSlide(0);
+        });
+    </script>
+</body>
+</html>
