@@ -285,7 +285,26 @@
 .testimonial-dot:hover {
     transform: scale(1.1);
 }
+
+@media (max-width: 767px) {
+    /* Les flèches s'alignent exactement avec le padding du cadre bleu */
+    #prevSlide {
+        left: 1px; /* Même valeur que px-6 (1.5rem = 24px) */
+    }
+    
+    #nextSlide {
+        right: 1px; /* Même valeur que px-6 (1.5rem = 24px) */
+    }
+    
+    /* Le contenu texte reste centré avec son padding normal */
+    .carousel-slide .relative.z-10 {
+        padding: 0 1rem; /* px-4 */
+        max-width: 100%;
+    }
+}
+
   </style>
+
 </head>
 <body class="font-poppins bg-white overflow-x-hidden overscroll-none">
     <!-- Enhanced header with mobile hamburger menu -->
@@ -443,23 +462,61 @@
     <!-- Improved "What is FlashAppart" section responsive layout -->
     <section class="container mx-auto px-4 mt-16 md:mt-24 max-w-7xl">
         <div class="grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
-            <!-- Left: Images -->
-            <div class="relative h-[400px] md:h-[500px] lg:h-auto">
-                <div class="relative">
-                    <img src="Images/Flas.png" alt="Property" class="rounded-[20px] w-[200px] md:w-[267px] h-[350px] md:h-[474px] object-cover">
-                    <div class="absolute top-5 md:top-7 left-3 md:left-4 w-[194px] md:w-[261px] h-[340px] md:h-[460px] border border-accent rounded-[20px]"></div>
-                </div>
-                
-                <div class="absolute top-0 left-[220px] md:left-[298px] space-y-3 md:space-y-4">
-                    <div class="bg-accent rounded-[20px] w-[150px] md:w-[282px] h-[90px] md:h-[127px] flex items-center justify-center px-4 md:px-6">
-                        <div class="text-white font-jakarta">
-                            <div class="text-2xl md:text-5xl font-bold leading-tight">+25</div>
-                        </div>
-                        <div class="text-white text-sm md:text-lg font-jakarta font-semibold ml-2 md:ml-4 leading-5 md:leading-7">
+                    <!-- Left: Images (Desktop) / Stats Cards (Mobile) -->
+            <div class="relative w-full">
+                <!-- AFFICHAGE MOBILE : 4 Cartes de statistiques -->
+                <div class="grid grid-cols-2 gap-4 md:hidden">
+                    <!-- Carte 1 : Agences immobilières -->
+                    <div class="bg-accent rounded-[20px] p-5 flex flex-col items-center justify-center text-center min-h-[140px]">
+                        <div class="text-white font-jakarta text-4xl font-bold leading-tight mb-2">+25</div>
+                        <div class="text-white text-sm font-jakarta font-semibold leading-snug">
                             Agences<br>immobilières
                         </div>
                     </div>
-                    <img src="Images/Fla2.png" alt="Property 2" class="rounded-[20px] w-[150px] md:w-[282px] h-[250px] md:h-[339px] object-cover">
+                    
+                    <!-- Carte 2 : Paiements assurés -->
+                    <div class="bg-primary rounded-[20px] p-5 flex flex-col items-center justify-center text-center min-h-[140px]">
+                        <div class="text-white font-jakarta text-4xl font-bold leading-tight mb-2">+10K</div>
+                        <div class="text-white text-sm font-jakarta font-semibold leading-snug">
+                            Paiements<br>assurés
+                        </div>
+                    </div>
+                    
+                    <!-- Carte 3 : Utilisateurs -->
+                    <div class="bg-secondary rounded-[20px] p-5 flex flex-col items-center justify-center text-center min-h-[140px]">
+                        <div class="text-white font-jakarta text-4xl font-bold leading-tight mb-2">+2K</div>
+                        <div class="text-white text-sm font-jakarta font-semibold leading-snug">
+                            Utilisateurs<br>actifs
+                        </div>
+                    </div>
+                    
+                    <!-- Carte 4 : Propriétés enregistrées -->
+                    <div class="bg-dark rounded-[20px] p-5 flex flex-col items-center justify-center text-center min-h-[140px]">
+                        <div class="text-white font-jakarta text-4xl font-bold leading-tight mb-2">+500</div>
+                        <div class="text-white text-sm font-jakarta font-semibold leading-snug">
+                            Propriétés<br>enregistrées
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AFFICHAGE DESKTOP : Images originales -->
+                <div class="hidden md:block relative h-[500px] lg:h-auto">
+                    <div class="relative">
+                        <img src="Images/Flas.png" alt="Property" class="rounded-[20px] w-[267px] h-[474px] object-cover">
+                        <div class="absolute top-7 left-4 w-[261px] h-[460px] border border-accent rounded-[20px]"></div>
+                    </div>
+                    
+                    <div class="absolute top-0 left-[298px] space-y-4">
+                        <div class="bg-accent rounded-[20px] w-[282px] h-[127px] flex items-center justify-center px-6">
+                            <div class="text-white font-jakarta">
+                                <div class="text-5xl font-bold leading-tight">+25</div>
+                            </div>
+                            <div class="text-white text-lg font-jakarta font-semibold ml-4 leading-7">
+                                Agences<br>immobilières
+                            </div>
+                        </div>
+                        <img src="Images/Fla2.png" alt="Property 2" class="rounded-[20px] w-[282px] h-[339px] object-cover">
+                    </div>
                 </div>
             </div>
             
@@ -603,26 +660,67 @@
     </section>
 
     <!-- Improved CTA section responsive layout -->
-    <section class="container mx-auto px-4 mt-16 md:mt-24 max-w-7xl">
-        <div class="relative">
-            <div class="bg-[#d9d9d9] rounded-[20px] md:rounded-[30px] pt-20 md:pt-36 pb-12 md:pb-20 px-6 md:px-16 relative overflow-hidden">
-                <img src="Images/Sans titre-1.png" alt="Agent" class="absolute left-0 md:left-7 -top-0 w-[250px] md:w-[600px] h-[250px] md:h-[591px] object-contain opacity-30 md:opacity-100">
+<!-- Improved CTA section responsive layout -->
+<section class="container mx-auto px-4 mt-16 md:mt-24 max-w-7xl">
+    <div class="bg-[#d9d9d9] rounded-[20px] md:rounded-[30px] overflow-hidden">
+        <!-- Flex container: column sur mobile, row sur desktop -->
+        <div class="flex flex-col md:flex-row items-center">
+            
+            <!-- Image Section - En haut sur mobile, à gauche sur desktop -->
+            <div class="w-full md:w-1/2 md:order-1">
+                <img 
+                    src="Images/Sans titre-1.png" 
+                    alt="Agent immobilier" 
+                    class="w-full h-[300px] md:h-[500px] lg:h-[591px] object-cover object-center"
+                >
+            </div>
+            
+            <!-- Content Section - En bas sur mobile, à droite sur desktop -->
+            <div class="w-full md:w-1/2 p-6 md:p-12 lg:p-16 md:order-2">
                 
-                <div class="ml-auto max-w-full md:max-w-[525px] relative z-10 md:left-6">
-                    <h2 class="text-black text-2xl md:text-[30px] font-extrabold leading-tight mb-6 md:mb-8">
-                        Avec FlashAppart, recevez vos loyers en un éclair !
-                    </h2>
-                    <p class="text-black text-lg md:text-[20px] font-normal leading-relaxed mb-8 md:mb-12">
-                        Enregistrez gratuitement vos maisons et suivez vos paiements en temps réel. Collectez
-                        vos loyers sans vous déplacer. Dites adieu aux reçus papier et aux calculs manuels coûteux.
-                    </p>
-                    <button class="bg-primary text-white px-8 md:px-8 py-4 md:py-4 rounded-[10px] font-poppins font-semibold text-[18px] hover:bg-primary/90 transition w-full sm:w-auto">
+                <!-- Badges style annotation avec barre de séparation -->
+              <!-- Container avec centrage -->
+            <div class="flex justify-center md:justify-start mb-2 md:mb-1">
+                <div class="inline-flex items-center gap-0">
+                    <!-- Badge Agence - Coins gauche arrondis -->
+                    <span class="bg-secondary text-white font-normal text-xs sm:text-sm md:text-lg px-2 inline-block rounded-l-md">
+                        Agence immobilière
+                    </span>
+                    
+                    <!-- Barre de séparation verticale -->
+                    <span class="bg-secondary text-white font-normal text-xs sm:text-sm md:text-lg px-1.5 inline-block">
+                        |
+                    </span>
+                    
+                    <!-- Badge Propriétaire - Coins droite arrondis -->
+                    <span class="bg-secondary text-white font-normal text-xs sm:text-sm md:text-lg px-2 inline-block rounded-r-md">
+                        Propriétaire
+                    </span>
+                </div>
+            </div>
+                
+                <!-- Titre principal -->
+                <h2 class="text-black text-2xl md:text-3xl lg:text-[30px] font-extrabold leading-tight mb-6 md:mb-8 text-center md:text-left">
+                    Avec FlashAppart, recevez vos loyers en un éclair !
+                </h2>
+                
+                <!-- Description -->
+                <p class="text-black text-base md:text-lg lg:text-[20px] font-normal leading-relaxed mb-8 md:mb-10 text-center md:text-left">
+                    Enregistrez gratuitement vos maisons et suivez vos paiements en temps réel. Collectez
+                    vos loyers sans vous déplacer. Dites adieu aux reçus papier et aux calculs manuels coûteux.
+                </p>
+                
+                <!-- CTA Button -->
+                <div class="flex justify-center md:justify-start">
+                    <button class="bg-primary text-white px-3 py-3 rounded-[10px] font-poppins font-semibold text-[18px] hover:bg-primary/90 transition-all duration-300 hover:scale-105 shadow-lg sm:w-auto">
                         Enregistrer une maison
                     </button>
                 </div>
             </div>
+            
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Improved partners section responsive layout -->
     <section class="container mx-auto px-4 mt-16 md:mt-24 max-w-7xl">
