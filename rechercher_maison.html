@@ -16,28 +16,28 @@
 </head>
 <body class="bg-white min-h-screen flex flex-col overflow-x-hidden overscroll-none">
     
-    <!-- Header optimisé - Navbar toujours visible -->
-    <header class="bg-white shadow-md py-2.5 md:py-4 px-3 md:px-12 lg:px-24">
+    <!-- Header optimisé - Plus compact sur desktop -->
+    <header class="bg-white shadow-md py-2.5 md:py-3 px-3 md:px-12 lg:px-24">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 md:gap-6">
-            <!-- Logo - Compact sur mobile -->
+            <!-- Logo - Plus compact -->
             <div class="flex items-center flex-shrink-0">
-                <img src="Images/Gemini_Generated_Image_mgy05mgy05mgy05m 1.png" alt="FlashAppart Logo" class="h-10 w-auto md:h-16">
+                <img src="Images/Gemini_Generated_Image_mgy05mgy05mgy05m 1.png" alt="FlashAppart Logo" class="h-10 w-auto md:h-12 lg:h-14">
             </div>
             
-            <!-- Navigation - Toujours visible -->
-            <nav class="flex items-center gap-2 md:gap-6">
-                <a href="index.html" class="text-[#22252D] text-xs md:text-base lg:text-lg font-bold hover:text-[#3364CA] transition whitespace-nowrap">
+            <!-- Navigation - Plus compacte -->
+            <nav class="flex items-center gap-2 md:gap-4 lg:gap-6">
+                <a href="index.html" class="text-[#22252D] text-xs md:text-sm lg:text-base font-bold hover:text-[#3364CA] transition whitespace-nowrap">
                     Accueil
                 </a>
-                <a href="rechercher_recu.html" class="bg-[#3364CA] text-white px-3 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 rounded-lg md:rounded-xl font-semibold text-[10px] md:text-sm lg:text-base hover:bg-[#2952a8] transition-colors shadow-md whitespace-nowrap">
+                <a href="rechercher_recu.html" class="bg-[#3364CA] text-white px-3 py-2 md:px-4 md:py-2.5 lg:px-6 lg:py-3 rounded-lg md:rounded-xl font-semibold text-[10px] md:text-xs lg:text-sm hover:bg-[#2952a8] transition-colors shadow-md whitespace-nowrap">
                     Rechercher un reçu
                 </a>
             </nav>
         </div>
     </header>
 
-    <!-- Progress Bar - Mieux espacé -->
-    <div class="w-full px-3 md:px-12 lg:px-24 mt-3 md:mt-4">
+    <!-- Progress Bar - Plus compact -->
+    <div class="w-full px-3 md:px-12 lg:px-24 mt-2 md:mt-3">
         <div class="max-w-7xl mx-auto flex items-center gap-1.5 md:gap-2 h-1.5 md:h-2">
             <!-- Step 1 - Active -->
             <div class="flex-1 h-full bg-[#5B72A2] rounded-full"></div>
@@ -48,35 +48,35 @@
         </div>
     </div>
 
-    <!-- Main Content - Optimisé -->
-    <main class="flex-1 flex flex-col items-center justify-center px-4 py-6 md:py-16">
-        <div class="w-full max-w-3xl text-center space-y-5 md:space-y-8">
+    <!-- Main Content - Dézoomé sur desktop -->
+    <main class="flex-1 flex flex-col items-center justify-center px-4 py-4 md:py-8 lg:py-10">
+        <div class="w-full max-w-3xl text-center space-y-3 md:space-y-5 lg:space-y-6">
             
-            <!-- Logo Central - Plus petit sur mobile -->
-            <div class="flex justify-center mb-3 md:mb-6">
-                <img src="Images/ChatGPT Image 22 oct. 2025, 13_32_16.png" alt="FlashAppart" class="h-20 md:h-40 lg:h-48 w-auto">
+            <!-- Logo Central - Plus petit -->
+            <div class="flex justify-center mb-2 md:mb-4">
+                <img src="Images/ChatGPT Image 22 oct. 2025, 13_32_16.png" alt="FlashAppart" class="h-20 md:h-28 lg:h-32 w-auto">
             </div>
 
-            <!-- Welcome Text -->
-            <h2 class="text-[#22252D] text-base md:text-xl lg:text-2xl font-normal">
+            <!-- Welcome Text - Plus petit -->
+            <h2 class="text-[#22252D] text-base md:text-lg lg:text-xl font-normal">
                 Bienvenue sur FlashAppart
             </h2>
 
-            <!-- Main Heading -->
-            <h1 class="text-[#22252D] text-xl md:text-4xl lg:text-5xl font-semibold leading-tight">
+            <!-- Main Heading - Plus petit -->
+            <h1 class="text-[#22252D] text-xl md:text-2xl lg:text-3xl font-semibold leading-tight">
                 Payez votre loyer
             </h1>
 
-            <!-- Search Form -->
-            <form action="/payer-loyer" method="GET" class="space-y-3 md:space-y-5 mt-6 md:mt-12">
+            <!-- Search Form - Plus compact -->
+            <form action="/payer-loyer" method="GET" class="space-y-3 md:space-y-4 mt-4 md:mt-6">
                 <!-- Input Field -->
                 <div class="w-full">
                     <input 
                         type="text" 
                         name="code_maison" 
                         id="code_maison"
-                        placeholder="Entrer votre numéro de compte (EX: MA0001)"
-                        class="w-full px-4 py-3 md:px-6 md:py-4 text-xs md:text-base text-[#676357] placeholder:text-[#676357] placeholder:text-xs md:placeholder:text-base bg-white border border-gray-200 rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-[#3364CA] focus:border-transparent transition"
+                        placeholder="Entrez le numéro de votre maison (EX: MA0001)"
+                        class="w-full px-4 py-2.5 md:px-5 md:py-3 lg:px-6 lg:py-3.5 text-xs md:text-sm lg:text-base text-[#676357] placeholder:text-[#676357] placeholder:text-xs md:placeholder:text-sm lg:placeholder:text-base bg-white border border-gray-200 rounded-xl shadow-md focus:outline-none focus:ring-2 focus:ring-[#3364CA] focus:border-transparent transition"
                         required
                         pattern="^M[A-Z]{1,2}\d{4}$"
                         title="Format: MA0001 à MZZ9999"
@@ -86,10 +86,10 @@
                 <!-- Submit Button -->
                 <a href="payement.html"
                     type="submit"
-                    class="w-full px-4 py-3 md:px-6 md:py-4 bg-[#D9D9D9] text-[#66666A]/50 font-semibold text-sm md:text-lg rounded-xl flex items-center justify-center gap-2 md:gap-3 hover:bg-[#3364CA] hover:text-white transition-all duration-300 group"
+                    class="w-full px-4 py-2.5 md:px-5 md:py-3 lg:px-6 lg:py-3.5 bg-[#D9D9D9] text-[#66666A]/50 font-semibold text-sm md:text-base lg:text-lg rounded-xl flex items-center justify-center gap-2 md:gap-3 hover:bg-[#3364CA] hover:text-white transition-all duration-300 group"
                 >
                     <span>Rechercher</span>
-                    <svg class="w-4 h-4 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 group-hover:translate-x-1 transition-transform" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"/>
                     </svg>
                 </a>
@@ -98,19 +98,19 @@
         </div>
     </main>
 
-    <!-- Tagline - Plus petit sur mobile -->
-    <div class="text-center py-3 md:py-6 px-4">
-        <p class="text-[#3364CA] text-sm md:text-xl font-bold">
+    <!-- Tagline - Plus compact -->
+    <div class="text-center py-3 md:py-4 px-4">
+        <p class="text-[#3364CA] text-sm md:text-base lg:text-lg font-bold">
             Avec FlashAppart, payez vos loyers en un éclair.
         </p>
     </div>
 
-    <!-- Footer optimisé -->
-    <footer class="bg-white shadow-[inset_0_2px_4px_rgba(0,0,0,0.25)] py-5 md:py-8">
+    <!-- Footer optimisé - Plus compact -->
+    <footer class="bg-white shadow-[inset_0_2px_4px_rgba(0,0,0,0.25)] py-4 md:py-6">
         <div class="max-w-7xl mx-auto px-4">
         
             <!-- Social Icons & Links Section -->
-            <div class="flex flex-col items-center justify-center gap-3 md:gap-6 mb-3 md:mb-6">
+            <div class="flex flex-col items-center justify-center gap-3 md:gap-4 mb-3 md:mb-4">
 
                 <!-- Icônes sociales -->
                 <div class="flex items-center justify-center gap-2 md:gap-3">
@@ -139,23 +139,23 @@
                     </a>
                 </div>
 
-                <!-- Liens - Mieux espacés sur mobile -->
-                <nav class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-8 text-center">
-                    <a href="#" class="text-black text-xs md:text-base hover:text-[#3364CA] transition">
+                <!-- Liens - Plus compacts -->
+                <nav class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-6 text-center">
+                    <a href="#" class="text-black text-xs md:text-sm hover:text-[#3364CA] transition">
                         FaQs
                     </a>
-                    <a href="#" class="text-black text-xs md:text-base hover:text-[#3364CA] transition">
+                    <a href="#" class="text-black text-xs md:text-sm hover:text-[#3364CA] transition">
                         Politique de confidentialité
                     </a>
-                    <a href="#" class="text-black text-xs md:text-base hover:text-[#3364CA] transition">
-                        Conditions générales d'utilisation
+                    <a href="#" class="text-black text-xs md:text-sm hover:text-[#3364CA] transition">
+                        Conditions générales
                     </a>
                 </nav>
             </div>
 
             <!-- Copyright -->
             <div class="text-center pt-3 md:pt-4 border-t border-gray-200">
-                <p class="text-black text-[10px] md:text-sm font-medium">
+                <p class="text-black text-[10px] md:text-xs font-medium">
                     Copyright © <span id="year"></span>. Tous droits réservés
                 </p>
             </div>

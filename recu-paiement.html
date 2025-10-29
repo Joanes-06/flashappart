@@ -20,19 +20,19 @@
 <body class="bg-white min-h-screen flex flex-col overflow-x-hidden overscroll-none">
     
     <!-- Header optimisé - Navbar toujours visible -->
-    <header class="bg-white shadow-md py-2.5 md:py-4 px-3 md:px-12 lg:px-24">
+   <header class="bg-white shadow-md py-2.5 md:py-3 px-3 md:px-12 lg:px-24">
         <div class="max-w-7xl mx-auto flex items-center justify-between gap-2 md:gap-6">
-            <!-- Logo - Compact sur mobile -->
+            <!-- Logo - Plus compact -->
             <div class="flex items-center flex-shrink-0">
-                <img src="Images/Gemini_Generated_Image_mgy05mgy05mgy05m 1.png" alt="FlashAppart Logo" class="h-10 w-auto md:h-16">
+                <img src="Images/Gemini_Generated_Image_mgy05mgy05mgy05m 1.png" alt="FlashAppart Logo" class="h-10 w-auto md:h-12 lg:h-14">
             </div>
             
-            <!-- Navigation - Toujours visible -->
-            <nav class="flex items-center gap-2 md:gap-6">
-                <a href="index.html" class="text-[#22252D] text-xs md:text-base lg:text-lg font-bold hover:text-[#3364CA] transition whitespace-nowrap">
+            <!-- Navigation - Plus compacte -->
+            <nav class="flex items-center gap-2 md:gap-4 lg:gap-6">
+                <a href="index.html" class="text-[#22252D] text-xs md:text-sm lg:text-base font-bold hover:text-[#3364CA] transition whitespace-nowrap">
                     Accueil
                 </a>
-                <a href="rechercher_recu.html" class="bg-[#3364CA] text-white px-3 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 rounded-lg md:rounded-xl font-semibold text-[10px] md:text-sm lg:text-base hover:bg-[#2952a8] transition-colors shadow-md whitespace-nowrap">
+                <a href="rechercher_recu.html" class="bg-[#3364CA] text-white px-3 py-2 md:px-4 md:py-2.5 lg:px-6 lg:py-3 rounded-lg md:rounded-xl font-semibold text-[10px] md:text-xs lg:text-sm hover:bg-[#2952a8] transition-colors shadow-md whitespace-nowrap">
                     Rechercher un reçu
                 </a>
             </nav>
@@ -163,22 +163,22 @@
             </div>
 
             <!-- Action Buttons - Sur la même ligne -->
-            <div class="flex items-center justify-between gap-2 md:gap-4 max-w-4xl mx-auto">
+            <div class="flex flex-col md:flex-row items-stretch md:items-center justify-center md:justify-between gap-3 md:gap-4 max-w-4xl mx-auto">
                 <!-- Retour Button -->
-                <a href="rechercher_maison.html" class="inline-flex items-center justify-center gap-1.5 md:gap-3 px-3 md:px-6 lg:px-8 py-2.5 md:py-3 bg-transparent border-2 border-[#66666A] text-[#66666A] text-[10px] md:text-sm lg:text-base font-semibold rounded-lg md:rounded-xl hover:bg-[#66666A] hover:text-white transition-all duration-300 flex-shrink-0">
+                <a href="rechercher_maison.html" class="inline-flex items-center justify-center gap-1.5 md:gap-3 px-4 md:px-6 lg:px-8 py-2.5 md:py-3 bg-transparent border-2 border-[#66666A] text-[#66666A] text-xs md:text-sm lg:text-base font-semibold rounded-lg md:rounded-xl hover:bg-[#66666A] hover:text-white transition-all duration-300 order-2 md:order-1">
                     <svg class="w-3.5 h-3.5 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M10.975 23l2.847-2.828-6.176-6.176h16.354v-3.992h-16.354l6.176-6.176-2.847-2.828-10.975 11z"/>
                     </svg>
                     <span>Retour</span>
                 </a>
 
-                <!-- Download Button -->
+                <!-- Download Button - FOND ORANGE avec hover bleu -->
                 <button 
                     id="downloadBtn"
-                    class="inline-flex items-center justify-center gap-1.5 md:gap-3 px-3 md:px-6 lg:px-8 py-2.5 md:py-3 bg-[#D9D9D9] text-[#66666A] text-[10px] md:text-sm lg:text-base font-semibold rounded-lg md:rounded-xl hover:bg-[#3364CA] hover:text-white transition-all duration-300 flex-1"
+                    class="inline-flex items-center justify-center gap-2 md:gap-3 px-4 md:px-6 lg:px-8 py-3 md:py-3.5 bg-[#F4902E] text-white text-xs md:text-sm lg:text-base font-bold rounded-lg md:rounded-xl hover:bg-[#3364CA] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 order-1 md:order-2"
                 >
-                    <span>Télécharger</span>
-                    <svg class="w-3.5 h-3.5 md:w-5 md:h-5 lg:w-6 lg:h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <span class="whitespace-nowrap">Télécharger mon reçu</span>
+                    <svg class="w-4 h-4 md:w-5 md:h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
                     </svg>
                 </button>
@@ -260,26 +260,29 @@
             const downloadBtn = document.getElementById('downloadBtn');
 
             downloadBtn.addEventListener('click', function() {
-                // Enable button styling
-                this.classList.remove('bg-[#D9D9D9]', 'text-[#66666A]');
-                this.classList.add('bg-[#3364CA]', 'text-white');
+                // Change l'état du bouton pendant le téléchargement
+                const originalHTML = this.innerHTML;
                 
-                // Simulate download
-                this.innerHTML = '<span>Téléchargement...</span>';
+                // Animation de téléchargement
+                this.innerHTML = '<span class="whitespace-nowrap">Téléchargement...</span>';
+                this.classList.add('cursor-wait');
                 
                 setTimeout(() => {
-                    this.innerHTML = '<span>Téléchargé ✓</span>';
+                    // Succès
+                    this.innerHTML = `
+                        <span class="whitespace-nowrap">Téléchargé</span>
+                        <svg class="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                    `;
+                    this.classList.remove('bg-[#F4902E]');
+                    this.classList.add('bg-green-500');
                     
-                    // Reset after 3 seconds
+                    // Reset après 3 secondes
                     setTimeout(() => {
-                        this.innerHTML = `
-                            <span>Télécharger</span>
-                            <svg class="w-5 h-5 md:w-6 md:h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                            </svg>
-                        `;
-                        this.classList.remove('bg-[#3364CA]', 'text-white');
-                        this.classList.add('bg-[#D9D9D9]', 'text-[#66666A]');
+                        this.innerHTML = originalHTML;
+                        this.classList.remove('bg-green-500', 'cursor-wait');
+                        this.classList.add('bg-[#F4902E]');
                     }, 3000);
                 }, 1500);
             });
