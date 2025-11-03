@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Maisons - FlashAppart</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-8">
+                <img src="Images/Gemini_Generated_Image_mgy05mgy05mgy05m 1.png" alt="FlashAppart" class="h-20 w-20 md:h-auto w-auto object-contain">
+                <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-[#22252D] capitalize">Bienvenue ImmoAppart</h1>
+            </div>
+
+            <!-- Navigation Tabs & Profile -->
+            <div class="flex items-center gap-8">
+                <!-- Navigation Tabs -->
+                <nav class="hidden md:flex items-center gap-10">
+                    <a href="#" class="flex flex-col items-center gap-2 group">
+                        <span class="text-lg font-semibold text-[#22252D] group-hover:text-[#3364CA] transition-colors">Paramètres</span>
+                        <div class="h-0.5 w-0 group-hover:w-full bg-[#3364CA] transition-all duration-300"></div>
+                    </a>
+                    <a href="#" class="flex flex-col items-center gap-2 group">
+                        <span class="text-lg font-semibold text-[#3364CA]">Tableau de bord</span>
+                        <div class="h-0.5 w-full bg-[#3364CA]"></div>
+                    </a>
+                </nav>
+
+                <!-- Profile Picture -->
+                <div class="relative">
+                    <img src="/placeholder.svg?height=60&width=60" alt="Profile" class="h-14 w-14 rounded-full border-4 border-white shadow-md object-cover cursor-pointer hover:opacity-90 transition-opacity">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex flex-col lg:flex-row gap-6 p-4 md:p-6 lg:p-8 max-w-[1600px] mx-auto">
+            <!-- Sidebar -->
+            <aside class="w-full lg:w-[290px] bg-white rounded-xl shadow-md p-5 h-fit">
+                <nav class="flex flex-col gap-0">
+                    <!-- Statistiques (Active) -->
+                    <a href="dashboard_agence.html" class="flex items-center gap-3 px-5 py-4 rounded-lg hover:bg-[#EFF3FB] transition-all group">
+                        <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.5 17.5H5V8.75H7.5V17.5ZM12.5 17.5H10V5H12.5V17.5ZM17.5 17.5H15V12.5H17.5V17.5ZM20 20H2.5V2.5H20V20.125M20 0H2.5C1.125 0 0 1.125 0 2.5V20C0 21.375 1.125 22.5 2.5 22.5H20C21.375 22.5 22.5 21.375 22.5 20V2.5C22.5 1.125 21.375 0 20 0Z" fill="#3364CA"/>
+                        </svg>
+                        <span class="text-base font-light text-[#3364CA] group-hover:font-semibold transition-all">Statistiques</span>
+                    </a>
+
+                    <!-- Mes Maisons -->
+                    <a href="mes_maisons.html" class="flex items-center gap-3 px-5 py-4 rounded-lg bg-[#EFF3FB] transition-all group">
+                        <svg 
+                            class="w-7 h-7 flex-shrink-0" 
+                            viewBox="0 0 30 30" 
+                            fill="none" 
+                            xmlns="http://www.w3.org/2000/svg"
+                            >
+                            <path 
+                                d="M4 12L15 3L26 12V26H18V18H12V26H4V12Z" 
+                                stroke="#3364CA" 
+                                stroke-width="2" 
+                                stroke-linecap="round" 
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+
+                        <span class="text-base font-semibold text-[#3364CA]">Mes Maisons</span>
+                    </a>
+
+                    <!-- Mes locataires -->
+                    <a href="mes_locataires.html" class="flex items-center gap-3 px-5 py-4 rounded-lg hover:bg-[#EFF3FB] transition-all group">
+                        <svg 
+                            class="w-7 h-7 flex-shrink-0 text-[#3364CA]" 
+                            viewBox="0 0 30 30" 
+                            fill="none" 
+                            xmlns="http://www.w3.org/2000/svg"
+                            >
+                            <!-- contour général -->
+                            <rect 
+                                x="3.75" 
+                                y="3.75" 
+                                width="22.5" 
+                                height="22.5" 
+                                rx="3" 
+                                stroke="currentColor" 
+                                stroke-width="2" 
+                                fill="none"
+                            />
+                            
+                            <!-- tête -->
+                            <circle 
+                                cx="15" 
+                                cy="12" 
+                                r="4" 
+                                stroke="currentColor" 
+                                stroke-width="2" 
+                                fill="none"
+                            />
+                            
+                            <!-- épaules -->
+                            <path 
+                                d="M8 24C8 20 11 18 15 18C19 18 22 20 22 24" 
+                                stroke="currentColor" 
+                                stroke-width="2" 
+                                stroke-linecap="round" 
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                        <span class="text-base font-light text-[#3364CA] group-hover:font-semibold transition-all">Mes locataires</span>
+                    </a>
+
+                    <!-- Historiques de paiement -->
+                    <a href="#" class="flex items-center gap-3 px-5 py-4 rounded-lg hover:bg-[#EFF3FB] transition-all group">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_253_56)">
+                            <path d="M2.5 2.5H7.5V0H2.5C1.125 0 0 1.125 0 2.5V7.5H2.5V2.5ZM27.5 0H22.5V2.5H27.5V7.5H30V2.5C30 1.125 28.875 0 27.5 0ZM2.5 22.5H0V27.5C0 28.875 1.125 30 2.5 30H7.5V27.5H2.5V22.5ZM27.5 27.5H22.5V30H27.5C28.875 30 30 28.875 30 27.5V22.5H27.5V27.5ZM10 7.5V5H12.5V7.5H10ZM12.5 17.5V15H15V17.5H12.5ZM20 5H22.5V7.5H20V5ZM22.5 7.5H25V10H22.5V7.5ZM22.5 17.5H25V20H22.5V17.5ZM25 15H20V22.5H25V25H5V5H7.5V7.5H10V12.5H7.5V15H10V17.5H12.5V20H15V22.5H17.5V20H15V17.5H17.5V12.5H12.5V7.5H15V5H17.5V10H20V12.5H25V15ZM10 22.5V20H7.5V22.5H10Z" fill="#3364CA"/>
+                            </g>
+                            <defs>
+                            <clipPath id="clip0_253_56">
+                            <rect width="30" height="30" fill="white"/>
+                            </clipPath>
+                            </defs>
+                        </svg>
+                        <span class="text-base font-light text-[#3364CA] group-hover:font-semibold transition-all">Historiques de paiement</span>
+                    </a>
+
+                    <!-- Mon portefeuille -->
+                    <a href="#" class="flex items-center gap-3 px-5 py-4 rounded-lg hover:bg-[#EFF3FB] transition-all group">
+                        <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.75 15.075C18.4875 15.4375 18.3 15.8375 18.125 16.25H11.25V14.375C11.25 14.025 11.525 13.75 11.875 13.75H18.125C18.475 13.75 18.75 14.025 18.75 14.375V15.075ZM26.25 11.25H3.75V3.75H26.25V11.25ZM23.75 6.25H6.25V8.75H23.75V6.25ZM16.25 23.75H7.5V12.5H5V26.25H16.2875C16.25 26.125 16.25 26 16.25 25.875V23.75ZM28.75 21.625V26C28.75 26.75 28 27.5 27.125 27.5H20.25C19.5 27.5 18.75 26.75 18.75 25.875V21.5C18.75 20.75 19.5 20 20.25 20V18.125C20.25 16.375 22 15 23.75 15C25.5 15 27.25 16.375 27.25 18.125V20C28 20 28.75 20.75 28.75 21.625ZM25.625 18.125C25.625 17.125 24.75 16.5 23.75 16.5C22.75 16.5 21.875 17.125 21.875 18.125V20H25.625V18.125Z" fill="#3364CA"/>
+                        </svg>
+                        <span class="text-base font-light text-[#3364CA] group-hover:font-semibold transition-all">Mon portefeuille</span>
+                    </a>
+                </nav>
+        </aside>
+
+            <!-- Main Content Area -->
+           <section class="flex-1 bg-white rounded-xl shadow-md p-6 md:p-8">
+                <!-- Header Section -->
+                <div class="space-y-6 lg:space-y-8">
+                    <!-- Title and Add Button -->
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <h2 class="text-3xl lg:text-4xl font-semibold text-[#3364CA] capitalize">Mes Maisons</h2>
+                        <a href="create_maison.html" class="w-full sm:w-auto px-6 py-3 lg:px-8 lg:py-4 bg-gradient-to-r from-[#3364CA] to-[#3364CA] hover:from-[#2854b9] hover:to-[#2854b9] text-white font-semibold rounded-xl transition-all duration-300 shadow-md hover:shadow-lg">
+                            Ajouter une maison
+                        </a>
+                    </div>
+
+                    <!-- Time Period Selector -->
+                    <div class="flex justify-end items-center gap-4 pb-4 border-b-4 border-[#EFF3FB]">
+                        <button class="flex items-center gap-3 text-[#3364CA] font-semibold">
+                            <span>Semaine</span>
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M7 10l5 5 5-5z"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Search and Filter -->
+                    <div class="bg-white rounded-lg shadow-md p-4 mb-8">
+                        <div class="flex flex-col md:flex-row gap-4">
+                            <div class="flex-1 flex items-center gap-3 px-6 py-3 bg-transparent rounded-xl border border-gray-200">
+                                <svg class="w-7 h-7 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 
+                                        16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 
+                                        5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 
+                                        4.99L20.49 19l-4.99-5zm-6 0C7.01 14 
+                                        5 11.99 5 9.5S7.01 5 9.5 5 
+                                        14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                                </svg>
+                                <input 
+                                    type="text" 
+                                    placeholder="Rechercher par Nom maison, ou Adresse..." 
+                                    class="flex-1 bg-transparent text-gray-700 placeholder-gray-400 outline-none text-base"
+                                />
+                            </div>
+                            <button class="px-6 py-3 bg-[#3364CA] hover:bg-[#2854b9] text-white font-semibold rounded-xl transition-colors">
+                                Filtrer
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <!-- Table Container -->
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <!-- Table -->
+                        <div class="overflow-x-auto">
+                            <table class="w-full min-w-[1000px]">
+                                <!-- Table Header -->
+                                <thead class="bg-white border border-gray-200">
+                                    <tr>
+                                        <th class="px-4 py-5 text-left">
+                                            <button class="flex items-center gap-1 font-semibold text-black hover:text-[#3364CA]">
+                                                Numéros
+                                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M7 10l5 5 5-5z"/>
+                                                </svg>
+                                            </button>
+                                        </th>
+                                        <th class="px-4 py-5 text-center">
+                                            <button class="flex items-center gap-1 font-semibold text-black hover:text-[#3364CA] mx-auto">
+                                                Nom
+                                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M7 10l5 5 5-5z"/>
+                                                </svg>
+                                            </button>
+                                        </th>
+                                        <th class="px-4 py-5 text-center">
+                                            <button class="flex items-center gap-1 font-semibold text-black hover:text-[#3364CA] mx-auto">
+                                                Localisation
+                                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M7 10l5 5 5-5z"/>
+                                                </svg>
+                                            </button>
+                                        </th>
+                                        <th class="px-4 py-5 text-left">
+                                            <button class="flex items-center gap-1 font-semibold text-black hover:text-[#3364CA]">
+                                                Montant à recevoir
+                                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M7 10l5 5 5-5z"/>
+                                                </svg>
+                                            </button>
+                                        </th>
+                                        <th class="px-4 py-5 text-left">
+                                            <button class="flex items-center gap-1 font-semibold text-black hover:text-[#3364CA]">
+                                                Montant reçus
+                                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M7 10l5 5 5-5z"/>
+                                                </svg>
+                                            </button>
+                                        </th>
+                                        <th class="px-4 py-5 text-center">
+                                            <button class="flex items-center gap-1 font-semibold text-black hover:text-[#3364CA] mx-auto">
+                                                Actions
+                                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M7 10l5 5 5-5z"/>
+                                                </svg>
+                                            </button>
+                                        </th>
+                                    </tr>
+                                </thead>
+
+                                <!-- Table Body -->
+                                <tbody>
+                                    <!-- Row 1 -->
+                                    <tr class="bg-[#EFF3FB] border-b border-gray-200">
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <span class="font-light">2458791653</span>
+                                                <button class="text-gray-400 hover:text-[#3364CA]" title="Copier">
+                                                    <svg width="19" height="17" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                      <rect width="21" height="20" transform="matrix(-1 0 0 1 21 0)" fill="url(#pattern0_131_819)"/>
+                                                      <defs>
+                                                      <pattern id="pattern0_131_819" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                                      <use xlink:href="#image0_131_819" transform="matrix(0.0078125 0 0 0.00820313 0 -0.025)"/>
+                                                      </pattern>
+                                                      <image id="image0_131_819" width="128" height="128" preserveAspectRatio="none" xlink:href="data:image/png;base64,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"/>
+                                                      </defs>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-center font-light">Maison A</td>
+                                        <td class="px-4 py-3 text-center font-light">Cotonou Vodje</td>
+                                        <td class="px-4 py-3 font-light">2500000 Fcfa</td>
+                                        <td class="px-4 py-3 font-light">2500000 Fcfa</td>
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center justify-center gap-2">
+                                                <button class="px-4 py-2 bg-[#3364CA] hover:bg-[#2854b9] text-white font-semibold rounded-xl transition-colors">
+                                                    Voir+
+                                                </button>
+                                                <button class="px-4 py-2 bg-[#ED2939] hover:bg-[#d41f2f] text-white font-semibold rounded-xl transition-colors">
+                                                    Supprimer
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Row 2 -->
+                                    <tr class="bg-white border-b border-gray-200">
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <span class="font-light">2458791653</span>
+                                                <button class="text-gray-400 hover:text-[#3364CA]" title="Copier">
+                                                    <svg width="19" height="17" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                      <rect width="21" height="20" transform="matrix(-1 0 0 1 21 0)" fill="url(#pattern0_131_819)"/>
+                                                      <defs>
+                                                      <pattern id="pattern0_131_819" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                                      <use xlink:href="#image0_131_819" transform="matrix(0.0078125 0 0 0.00820313 0 -0.025)"/>
+                                                      </pattern>
+                                                      <image id="image0_131_819" width="128" height="128" preserveAspectRatio="none" xlink:href="data:image/png;base64,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"/>
+                                                      </defs>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-center font-light">Maison B</td>
+                                        <td class="px-4 py-3 text-center font-light">Cotonou Vodje</td>
+                                        <td class="px-4 py-3 font-light">2500000 Fcfa</td>
+                                        <td class="px-4 py-3 font-light">1000000 Fcfa</td>
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center justify-center gap-2">
+                                                <button class="px-4 py-2 bg-[#3364CA] hover:bg-[#2854b9] text-white font-semibold rounded-xl transition-colors">
+                                                    Voir+
+                                                </button>
+                                                <button class="px-4 py-2 bg-[#ED2939] hover:bg-[#d41f2f] text-white font-semibold rounded-xl transition-colors">
+                                                    Supprimer
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Row 3 -->
+                                    <tr class="bg-[#EFF3FB] border-b border-gray-200">
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <span class="font-light">2458791653</span>
+                                                <button class="text-gray-400 hover:text-[#3364CA]" title="Copier">
+                                                    <svg width="19" height="17" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                      <rect width="21" height="20" transform="matrix(-1 0 0 1 21 0)" fill="url(#pattern0_131_819)"/>
+                                                      <defs>
+                                                      <pattern id="pattern0_131_819" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                                      <use xlink:href="#image0_131_819" transform="matrix(0.0078125 0 0 0.00820313 0 -0.025)"/>
+                                                      </pattern>
+                                                      <image id="image0_131_819" width="128" height="128" preserveAspectRatio="none" xlink:href="data:image/png;base64,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"/>
+                                                      </defs>
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-center font-light">Maison B</td>
+                                        <td class="px-4 py-3 text-center font-light">Cotonou Vodje</td>
+                                        <td class="px-4 py-3 font-light">2500000 Fcfa</td>
+                                        <td class="px-4 py-3 font-light">1000000 Fcfa</td>
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center justify-center gap-2">
+                                                <button class="px-4 py-2 bg-[#3364CA] hover:bg-[#2854b9] text-white font-semibold rounded-xl transition-colors">
+                                                    Voir+
+                                                </button>
+                                                <button class="px-4 py-2 bg-[#ED2939] hover:bg-[#d41f2f] text-white font-semibold rounded-xl transition-colors">
+                                                    Supprimer
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="px-6 py-4 bg-[#EFF3FB] border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <!-- Items per page -->
+                            <div class="flex items-center gap-2 bg-white rounded-lg px-3 py-2 border border-gray-200">
+                                <span class="text-black">6/75</span>
+                                <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M7 10l5 5 5-5z"/>
+                                </svg>
+                            </div>
+
+                            <!-- Page numbers -->
+                            <div class="flex items-center gap-3">
+                                <!-- Previous button -->
+                                <button class="w-11 h-11 flex items-center justify-center bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors" disabled>
+                                    <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                                    </svg>
+                                </button>
+
+                                <!-- Page numbers -->
+                                <div class="flex items-center gap-2">
+                                    <button class="w-9 h-9 flex items-center justify-center bg-[#3364CA] text-white rounded-lg font-medium">1</button>
+                                    <button class="w-9 h-9 flex items-center justify-center text-gray-400 rounded-lg hover:bg-gray-100 font-medium">2</button>
+                                    <button class="w-9 h-9 flex items-center justify-center text-gray-400 rounded-lg hover:bg-gray-100 font-medium">3</button>
+                                    <span class="w-9 h-9 flex items-center justify-center text-gray-400">.</span>
+                                    <button class="w-9 h-9 flex items-center justify-center text-gray-400 rounded-lg hover:bg-gray-100 font-medium">5</button>
+                                </div>
+
+                                <!-- Next button -->
+                                <button class="w-11 h-11 flex items-center justify-center bg-white rounded-xl border border-gray-200 hover:bg-gray-50 transition-colors shadow-sm">
+                                    <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Export and Refresh Buttons -->
+                        <div class="px-6 py-4 flex flex-wrap items-center gap-4">
+                            <button class="px-6 py-3 text-[#3364CA] font-semibold rounded-xl hover:bg-[#EFF3FB] transition-colors">
+                                Exporter
+                            </button>
+                            <button class="px-6 py-3 text-[#3364CA] font-semibold rounded-xl hover:bg-[#EFF3FB] transition-colors">
+                                Actualiser
+                            </button>
+                        </div>
+                    </div>
+                </div>
+              </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white shadow-[inset_0_2px_4px_rgba(0,0,0,0.25)] py-8 mt-20">
+        <div class="max-w-7xl mx-auto">
+        
+            <!-- Social Icons & Links Section -->
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-6">
+
+            <!-- Bloc icônes + liens -->
+            <div class="flex flex-wrap items-center justify-center gap-6 md:gap-8">
+
+                <!-- Icônes sociales -->
+                <div class="flex items-center justify-center gap-3">
+                <a href="#" class="w-7 h-7 bg-[#F4902E] rounded-full flex items-center justify-center hover:opacity-80 transition">
+                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                    </svg>
+                </a>
+
+                <a href="#" class="w-7 h-7 bg-[#F4902E] rounded-full flex items-center justify-center hover:opacity-80 transition">
+                    <svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+                    </svg>
+                </a>
+
+                <a href="#" class="w-7 h-7 bg-[#F4902E] rounded-full flex items-center justify-center hover:opacity-80 transition">
+                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+
+                <a href="#" class="w-7 h-7 bg-[#F4902E] rounded-full flex items-center justify-center hover:opacity-80 transition">
+                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
+                    </svg>
+                </a>
+                </div>
+
+                <!-- Liens -->
+                <nav class="flex flex-wrap items-center justify-center gap-6 md:gap-8 text-center">
+                <a href="#" class="text-black text-base md:text-lg hover:text-[#3364CA] transition">
+                    FaQs
+                </a>
+                <a href="#" class="text-black text-base md:text-lg hover:text-[#3364CA] transition">
+                    Politique de confidentialité
+                </a>
+                <a href="#" class="text-black text-base md:text-lg hover:text-[#3364CA] transition">
+                    Conditions générales d'utilisation
+                </a>
+                </nav>
+
+            </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="text-center pt-4 border-t border-gray-200">
+                <p class="text-black text-xs md:text-sm font-medium">
+                    Copyright © <span id="year"></span>. Tous droits réservés
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('sidebar');
+
+        mobileMenuBtn?.addEventListener('click', () => {
+            sidebar?.classList.toggle('hidden');
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth < 1024) {
+                if (!sidebar?.contains(e.target) && !mobileMenuBtn?.contains(e.target)) {
+                    sidebar?.classList.add('hidden');
+                }
+            }
+        });
+
+        // Show sidebar on desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
+                sidebar?.classList.remove('hidden');
+            } else {
+                sidebar?.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

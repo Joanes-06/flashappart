@@ -3,19 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - FlashAppart</title>
+    <title>Mes Locataires - FlashAppart</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
         }
     </style>
 </head>
-<body class="bg-gray-50 overflow-x-hidden overscroll-none">
-    
+<body class="bg-gray-50">
     <!-- Header -->
     <header class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between">
@@ -48,22 +45,21 @@
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-[1440px] mx-auto px-6 py-8">
-        <div class="flex flex-col lg:flex-row gap-8">
-            
+    <main class="max-w-[1512px] mx-auto px-6 py-8">
+        <div class="flex gap-8">
             <!-- Sidebar Navigation -->
             <aside class="w-full lg:w-[290px] bg-white rounded-xl shadow-md p-5 h-fit">
                 <nav class="flex flex-col gap-0">
                     <!-- Statistiques (Active) -->
-                    <a href="dashboard_agence.html" class="flex items-center gap-3 px-5 py-4 rounded-lg bg-[#EFF3FB] transition-all">
+                    <a href="#" class="flex items-center gap-3 px-5 py-4 rounded-lg hover:bg-[#EFF3FB] transition-all group">
                         <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.5 17.5H5V8.75H7.5V17.5ZM12.5 17.5H10V5H12.5V17.5ZM17.5 17.5H15V12.5H17.5V17.5ZM20 20H2.5V2.5H20V20.125M20 0H2.5C1.125 0 0 1.125 0 2.5V20C0 21.375 1.125 22.5 2.5 22.5H20C21.375 22.5 22.5 21.375 22.5 20V2.5C22.5 1.125 21.375 0 20 0Z" fill="#3364CA"/>
                         </svg>
-                        <span class="text-base font-semibold text-[#3364CA]">Statistiques</span>
+                        <span class="text-base font-light text-[#3364CA] group-hover:font-semibold transition-all">Statistiques</span>
                     </a>
 
                     <!-- Mes Maisons -->
-                    <a href="mes_maisons.html" class="flex items-center gap-3 px-5 py-4 rounded-lg hover:bg-[#EFF3FB] transition-all group">
+                    <a href="#" class="flex items-center gap-3 px-5 py-4 rounded-lg hover:bg-[#EFF3FB] transition-all group">
                         <svg 
                             class="w-7 h-7 flex-shrink-0" 
                             viewBox="0 0 30 30" 
@@ -83,7 +79,7 @@
                     </a>
 
                     <!-- Mes locataires -->
-                    <a href="mes_locataires.html" class="flex items-center gap-3 px-5 py-4 rounded-lg hover:bg-[#EFF3FB] transition-all group">
+                    <a href="#" class="flex items-center gap-3 px-5 py-4 rounded-lg bg-[#EFF3FB] transition-all group">
                         <svg 
                             class="w-7 h-7 flex-shrink-0 text-[#3364CA]" 
                             viewBox="0 0 30 30" 
@@ -121,7 +117,7 @@
                                 stroke-linejoin="round"
                             />
                         </svg>
-                        <span class="text-base font-light text-[#3364CA] group-hover:font-semibold transition-all">Mes locataires</span>
+                        <span class="text-base font-semibold text-[#3364CA]">Mes locataires</span>
                     </a>
 
                     <!-- Historiques de paiement -->
@@ -150,61 +146,160 @@
             </aside>
 
             <!-- Main Content Area -->
-            <section class="flex-1 bg-white rounded-xl shadow-md p-6 lg:p-8">
-                
-                <!-- Header Section -->
-                <div class="flex flex-col gap-6 mb-8">
-                    <!-- Title & Add Button -->
-                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                        <h2 class="text-3xl lg:text-4xl font-semibold text-[#3364CA] capitalize">Statistiques</h2>
-                        <button class="px-6 py-3 bg-[#3364CA] hover:bg-[#2854b3] text-white font-semibold rounded-xl transition-colors shadow-md">
-                            Ajouter
+            <div class="flex-1 bg-white rounded-lg shadow-md p-6 lg:p-8">
+                <!-- Page Header -->
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8">
+                    <h2 class="text-3xl lg:text-4xl font-semibold text-[#3364CA] capitalize">Mes Locataires</h2>
+                    <a href="create_locataire.html" class="px-6 py-4 bg-gradient-to-r from-[#3364CA] to-[#3364CA] hover:from-[#2854b9] hover:to-[#2854b9] text-white font-semibold rounded-xl transition-all duration-300 shadow-md hover:shadow-lg">
+                        Ajouter un locataire
+                    </a>
+                </div>
+
+                <!-- Time Period Selector -->
+                <div class="flex justify-end items-center gap-5 pb-4 border-b-4 border-[#EFF3FB] mb-8">
+                    <span class="text-base font-semibold text-[#3364CA]">Semaine</span>
+                    <svg class="w-6 h-6 text-[#3364CA]" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </div>
+
+                <!-- Search and Filter -->
+                <div class="bg-white rounded-lg shadow-md p-4 mb-8">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-1 flex items-center gap-3 px-6 py-3 bg-transparent rounded-xl border border-gray-200">
+                            <svg class="w-7 h-7 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 
+                                    16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 
+                                    5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 
+                                    4.99L20.49 19l-4.99-5zm-6 0C7.01 14 
+                                    5 11.99 5 9.5S7.01 5 9.5 5 
+                                    14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            </svg>
+                            <input 
+                                type="text" 
+                                placeholder="Rechercher par Nom maison, ou Adresse..." 
+                                class="flex-1 bg-transparent text-gray-700 placeholder-gray-400 outline-none text-base"
+                            />
+                        </div>
+                        <button class="px-6 py-3 bg-[#3364CA] hover:bg-[#2854b9] text-white font-semibold rounded-xl transition-colors">
+                            Filtrer
                         </button>
                     </div>
+                </div>
 
-                    <!-- Time Period Selector -->
-                    <div class="flex items-center justify-between border-b-4 border-[#EFF3FB] pb-3">
-                        <div class="flex-1"></div>
-                        <div class="flex items-center gap-3 cursor-pointer group">
-                            <span class="text-base font-semibold text-[#3364CA]">Semaine</span>
-                            <svg class="w-6 h-6 text-[#3364CA] group-hover:translate-y-0.5 transition-transform" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+                <!-- Data Table -->
+                <div class="bg-white rounded-lg shadow-md p-5 mb-8">
+                    <div class="overflow-x-auto">
+                        <table class="w-full border border-gray-200">
+                            <thead>
+                                <tr class="bg-white border-b border-gray-200">
+                                    <th class="px-4 py-5 text-left">
+                                        <button class="flex items-center gap-1 font-semibold text-base text-gray-900 hover:text-[#3364CA] transition-colors">
+                                            Nom et prénoms
+                                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M7 10l5 5 5-5z"/>
+                                            </svg>
+                                        </button>
+                                    </th>
+                                    <th class="px-4 py-5 text-center">
+                                        <button class="flex items-center justify-center gap-1 font-semibold text-base text-gray-900 hover:text-[#3364CA] transition-colors mx-auto">
+                                            Contacts
+                                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M7 10l5 5 5-5z"/>
+                                            </svg>
+                                        </button>
+                                    </th>
+                                    <th class="px-4 py-5 text-left">
+                                        <button class="flex items-center gap-1 font-semibold text-base text-gray-900 hover:text-[#3364CA] transition-colors">
+                                            Chambre
+                                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M7 10l5 5 5-5z"/>
+                                            </svg>
+                                        </button>
+                                    </th>
+                                    <th class="px-4 py-5 text-left">
+                                        <button class="flex items-center gap-1 font-semibold text-base text-gray-900 hover:text-[#3364CA] transition-colors">
+                                            Maison
+                                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M7 10l5 5 5-5z"/>
+                                            </svg>
+                                        </button>
+                                    </th>
+                                    <th class="px-4 py-5 text-left">
+                                        <button class="flex items-center gap-1 font-semibold text-base text-gray-900 hover:text-[#3364CA] transition-colors">
+                                            Date d'adhésion
+                                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M7 10l5 5 5-5z"/>
+                                            </svg>
+                                        </button>
+                                    </th>
+                                    <th class="px-4 py-5 text-center">
+                                        <button class="flex items-center justify-center gap-1 font-semibold text-base text-gray-900 hover:text-[#3364CA] transition-colors mx-auto">
+                                            Actions
+                                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M7 10l5 5 5-5z"/>
+                                            </svg>
+                                        </button>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Row 1 (Light Blue Background) -->
+                                <tr class="bg-[#EFF3FB] hover:bg-[#e5edf9] transition-colors">
+                                    <td class="px-4 py-3 text-base font-light text-gray-900">BOKO Alain</td>
+                                    <td class="px-4 py-3 text-base font-light text-gray-900 text-center">+229 0145789623</td>
+                                    <td class="px-4 py-3 text-base font-light text-gray-900">A10</td>
+                                    <td class="px-4 py-3 text-base font-light text-gray-900">Maison A</td>
+                                    <td class="px-4 py-3 text-base font-light text-gray-900">25/04/2009</td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex justify-center">
+                                            <button class="px-4 py-3 bg-[#ED2939] hover:bg-[#d91f2f] text-white font-semibold rounded-xl transition-colors">
+                                                Supprimer
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- Row 2 (White Background) -->
+                                <tr class="bg-white hover:bg-gray-50 transition-colors">
+                                    <td class="px-4 py-3 text-base font-light text-gray-900">BOKO Alain</td>
+                                    <td class="px-4 py-3 text-base font-light text-gray-900 text-center">+229 0145789623</td>
+                                    <td class="px-4 py-3 text-base font-light text-gray-900">A10</td>
+                                    <td class="px-4 py-3 text-base font-light text-gray-900">Maison A</td>
+                                    <td class="px-4 py-3 text-base font-light text-gray-900">25/04/2009</td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex justify-center">
+                                            <button class="px-4 py-3 bg-[#ED2939] hover:bg-[#d91f2f] text-white font-semibold rounded-xl transition-colors">
+                                                Supprimer
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="flex justify-between items-center mt-6 px-6 py-4 bg-[#EFF3FB] rounded-lg border border-gray-100">
+                        <div class="flex items-center gap-2 px-2 py-2 bg-white rounded-lg border border-gray-100">
+                            <span class="text-base text-gray-900">2/2</span>
+                            <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M7 10l5 5 5-5z"/>
                             </svg>
                         </div>
                     </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-wrap gap-5 mt-6">
+                        <button class="px-4 py-3 bg-transparent hover:bg-gray-100 text-[#3364CA] font-semibold rounded-xl transition-colors border border-transparent hover:border-gray-200">
+                            Exporter
+                        </button>
+                        <button class="px-4 py-3 bg-transparent hover:bg-gray-100 text-[#3364CA] font-semibold rounded-xl transition-colors border border-transparent hover:border-gray-200">
+                            Actualiser
+                        </button>
+                    </div>
                 </div>
-
-                <!-- Statistics Cards -->
-                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-                    
-                    <!-- Card 1: Nombre Maisons -->
-                    <div class="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-shadow">
-                        <div class="flex flex-col gap-4">
-                            <h3 class="text-xl font-semibold text-[#22252D] capitalize">Nombre Maisons</h3>
-                            <p class="text-xl font-normal text-[#22252D]">17</p>
-                        </div>
-                    </div>
-
-                    <!-- Card 2: Nombres De Chambres -->
-                    <div class="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-shadow">
-                        <div class="flex flex-col gap-4">
-                            <h3 class="text-xl font-semibold text-[#22252D] capitalize">Nombres De Chambres</h3>
-                            <p class="text-xl font-normal text-[#22252D]">250</p>
-                        </div>
-                    </div>
-
-                    <!-- Card 3: Paiements Reçus -->
-                    <div class="bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg transition-shadow">
-                        <div class="flex flex-col gap-4">
-                            <h3 class="text-xl font-semibold text-[#22252D] capitalize">Paiements Reçus</h3>
-                            <p class="text-xl font-normal text-[#22252D]">50</p>
-                        </div>
-                    </div>
-
-                </div>
-
-            </section>
-
+            </div>
         </div>
     </main>
 
@@ -270,15 +365,10 @@
         </div>
     </footer>
 
+    <!-- Mobile Menu Toggle Script -->
     <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
+        // Add mobile menu functionality if needed
+        console.log('Tenants list page loaded');
     </script>
-
-    <!-- Mobile Menu Toggle Script (Optional for Livewire) -->
-    <script>
-        // Add mobile menu toggle functionality if needed
-        // This can be replaced with Livewire wire:click directives
-    </script>
-
 </body>
 </html>
