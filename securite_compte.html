@@ -3,17 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paramètres Profil - FlashAppart</title>
+    <title>Sécurité du compte - FlashAppart</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
         }
+        /* Style pour le checkbox personnalisé */
+        .custom-checkbox {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #3364CA;
+            border-radius: 4px;
+            background-color: white;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .custom-checkbox:checked {
+            background-color: #3364CA;
+        }
+        .custom-checkbox:checked::after {
+            content: '✓';
+            position: absolute;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     </style>
 </head>
 <body class="bg-gray-50">
-
     <!-- Header -->
     <header class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-3 sm:px-4 py-3 flex items-center justify-between">
@@ -44,28 +68,27 @@
         </div>
     </header>
 
-    <!-- Contenu principal -->
-    <main class="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-4 md:py-6">
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-4 md:py-5">
         <div class="flex flex-col lg:flex-row gap-4 lg:gap-5">
-            
-            <!-- Sidebar de paramètres -->
+            <!-- Sidebar Navigation -->
             <aside class="w-full lg:w-64">
                 <div class="bg-white rounded-lg shadow-md p-4">
                     <nav class="flex flex-col gap-0">
                         <!-- Informations personnelles - Actif -->
-                        <a href="infos_personnels.html" class="flex items-center gap-2.5 px-4 py-3 bg-[#EFF3FB] rounded-lg text-[#3364CA] transition-colors">
+                        <a href="infos_personnels.html" class="flex items-center gap-2.5 px-4 py-3 hover:bg-[#EFF3FB] rounded-lg text-[#3364CA] transition-colors">
                             <svg width="24" height="24" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M13.75 18.75H21.25V21.25H13.75V18.75ZM11.25 8.75H8.75V11.25H11.25V8.75ZM13.75 16.25H21.25V13.75H13.75V16.25ZM13.75 11.25H21.25V8.75H13.75V11.25ZM11.25 13.75H8.75V16.25H11.25V13.75ZM26.25 6.25V23.75C26.25 25.125 25.125 26.25 23.75 26.25H6.25C4.875 26.25 3.75 25.125 3.75 23.75V6.25C3.75 4.875 4.875 3.75 6.25 3.75H23.75C25.125 3.75 26.25 4.875 26.25 6.25ZM23.75 6.25H6.25V23.75H23.75V6.25ZM11.25 18.75H8.75V21.25H11.25V18.75Z" fill="#3364CA"/>
                             </svg>
-                            <span class="text-sm font-semibold">Informations personnelles</span>
+                            <span class="text-sm font-light">Informations personnelles</span>
                         </a>
 
                         <!-- Sécurité du compte -->
-                        <a href="securite_compte.html" class="flex items-center gap-2.5 px-4 py-3 rounded-lg text-[#3364CA] hover:bg-[#EFF3FB] transition-colors">
+                        <a href="securite_compte.html" class="flex items-center gap-2.5 px-4 py-3 rounded-lg text-[#3364CA] bg-[#EFF3FB] transition-colors">
                             <svg width="24" height="24" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M18.75 15.075C18.4875 15.4375 18.3 15.8375 18.125 16.25H11.25V14.375C11.25 14.025 11.525 13.75 11.875 13.75H18.125C18.475 13.75 18.75 14.025 18.75 14.375V15.075ZM26.25 11.25H3.75V3.75H26.25V11.25ZM23.75 6.25H6.25V8.75H23.75V6.25ZM16.25 23.75H7.5V12.5H5V26.25H16.2875C16.25 26.125 16.25 26 16.25 25.875V23.75ZM28.75 21.625V26C28.75 26.75 28 27.5 27.125 27.5H20.25C19.5 27.5 18.75 26.75 18.75 25.875V21.5C18.75 20.75 19.5 20 20.25 20V18.125C20.25 16.375 22 15 23.75 15C25.5 15 27.25 16.375 27.25 18.125V20C28 20 28.75 20.75 28.75 21.625ZM25.625 18.125C25.625 17.125 24.75 16.5 23.75 16.5C22.75 16.5 21.875 17.125 21.875 18.125V20H25.625V18.125Z" fill="#3364CA"/>
                             </svg>
-                            <span class="text-sm font-light">Sécurité du compte</span>
+                            <span class="text-sm font-semibold">Sécurité du compte</span>
                         </a>
 
                         <!-- Template du reçu -->
@@ -79,49 +102,71 @@
                 </div>
             </aside>
 
-            <!-- Zone de contenu principale -->
-            <section class="flex-1">
-                <div class="bg-white rounded-lg shadow-md p-4 md:p-5 lg:p-6">
-                    
-                    <!-- En-tête avec titre et bouton -->
-                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
-                        <h2 class="text-2xl lg:text-3xl font-semibold text-[#3364CA] capitalize">Informations Personnelles</h2>
-                        
-                        <button class="w-full sm:w-auto px-6 py-2.5 lg:px-7 lg:py-3 bg-gradient-to-r from-[#3364CA] to-[#3364CA] hover:from-[#2854b9] hover:to-[#2854b9] text-white text-sm font-semibold rounded-xl shadow-md transition-all duration-300 hover:shadow-lg">
-                            Modifier
+            <!-- Content Area -->
+            <div class="flex-1 bg-white rounded-lg shadow-md p-4 md:p-5 lg:p-6">
+                <!-- Page Title -->
+                <div class="mb-5">
+                    <h2 class="text-2xl lg:text-3xl font-semibold text-[#3364CA] capitalize">Sécurité du compte</h2>
+                </div>
+
+                <!-- Security Settings -->
+                <div class="flex flex-col gap-4 mb-6">
+                    <!-- Authentification Section (Expanded) -->
+                    <div class="border border-gray-300 rounded-lg bg-white">
+                        <button onclick="toggleAccordion('auth')" class="w-full p-3 flex items-center justify-between text-left hover:bg-gray-50 transition-colors rounded-lg">
+                            <span class="text-sm font-semibold text-gray-900">Authentification</span>
+                            <svg id="auth-icon" class="w-5 h-5 text-gray-900 transform rotate-180 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
                         </button>
-                    </div>
-
-                    <!-- Carte d'informations de l'agence -->
-                    <div class="bg-white shadow-lg rounded-lg p-5 lg:p-7">
-                        <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
-                            
-                            <!-- Logo de l'entreprise -->
-                            <div class="flex-shrink-0">
-                                <img src="Images/download 5.png" alt="Logo de l'entreprise" class="w-20 h-20 lg:w-24 lg:h-24 object-contain">
-                            </div>
-
-                            <!-- Informations de la compagnie -->
-                            <div class="flex-1 text-center lg:text-left space-y-1.5">
-                                <h3 class="text-lg font-medium text-gray-900">Company Name</h3>
-                                <p class="text-sm text-gray-700 leading-relaxed">
-                                    Conseil et assistance juridique - Gestion immobilière - Achat et vente de terrains
-                                </p>
-                                <p class="text-xs text-gray-700">
-                                    Tel: 015252525/015252525 &nbsp; RC:2543 BP 25461 &nbsp; IFU:251478963521554
-                                </p>
-                            </div>
-
-                            <!-- Cachet de l'agence -->
-                            <div class="flex-shrink-0">
-                                <img src="Images/download 10.png" alt="Cachet de l'agence" class="w-20 h-20 lg:w-24 lg:h-24 object-contain">
+                        <div id="auth-content" class="p-4 border-t border-gray-300">
+                            <div class="flex items-center gap-3">
+                                <!-- Checkbox fonctionnel -->
+                                <input type="checkbox" id="two-factor" class="custom-checkbox">
+                                <label for="two-factor" class="text-sm text-gray-900 cursor-pointer">
+                                    Activer l'authentification à double facteurs
+                                </label>
                             </div>
                         </div>
                     </div>
 
-                </div>
-            </section>
+                    <!-- Change Password Section (Collapsed) -->
+                    <div class="border border-gray-300 rounded-lg bg-gray-100">
+                        <button onclick="toggleAccordion('password')" class="w-full p-3 flex items-center justify-between text-left hover:bg-gray-200 transition-colors rounded-lg">
+                            <span class="text-sm font-semibold text-gray-900">Changer mon mot de passe</span>
+                            <svg id="password-icon" class="w-5 h-5 text-gray-900 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        <div id="password-content" class="hidden p-4 border-t border-gray-300 bg-white">
+                            <div class="flex flex-col gap-3">
+                                <!-- Ancien mot de passe -->
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-700 mb-1.5">Ancien mot de passe</label>
+                                    <input type="password" name="old_password" placeholder="Entrer votre ancien mot de passe" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3364CA] focus:border-transparent">
+                                </div>
 
+                                <!-- Nouveau mot de passe -->
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-700 mb-1.5">Nouveau mot de passe</label>
+                                    <input type="password" name="new_password" placeholder="Entrer votre nouveau mot de passe" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3364CA] focus:border-transparent">
+                                </div>
+
+                                <!-- Confirmer mot de passe -->
+                                <div>
+                                    <label class="block text-xs font-medium text-gray-700 mb-1.5">Confirmer le mot de passe</label>
+                                    <input type="password" name="confirm_password" placeholder="Confirmer votre nouveau mot de passe" class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3364CA] focus:border-transparent">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="px-8 py-2.5 bg-gradient-to-r from-[#3364CA] to-[#3364CA] hover:from-[#2854b9] hover:to-[#2854b9] text-white text-sm font-semibold rounded-xl transition-all duration-300 shadow-md hover:shadow-lg">
+                    Enregistrer
+                </button>
+            </div>
         </div>
     </main>
 
@@ -177,7 +222,20 @@
     <script>
         // Mise à jour automatique de l'année du copyright
         document.getElementById('year').textContent = new Date().getFullYear();
-    </script> 
 
+        // Toggle accordion sections
+        function toggleAccordion(section) {
+            const content = document.getElementById(`${section}-content`);
+            const icon = document.getElementById(`${section}-icon`);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+    </script>
 </body>
 </html>

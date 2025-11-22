@@ -3,1052 +3,390 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes Chambres - ImmoAppart</title>
+    <title>Mes Chambres - FlashAppart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #F5F5F5;
-            color: #22252D;
-        }
-
-        /* Header Styles */
-        .header {
-            background: white;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .logo {
-            width: 104px;
-            height: 80px;
-            object-fit: contain;
-        }
-
-        .welcome-text {
-            font-size: 32px;
-            font-weight: 300;
-            color: black;
-        }
-
-        .header-nav {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .nav-tabs {
-            display: flex;
-            gap: 40px;
-        }
-
-        .nav-tab {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: black;
-            font-size: 20px;
-            font-weight: 600;
-            padding-bottom: 5px;
-        }
-
-        .nav-tab.active {
-            color: #3364CA;
-            border-bottom: 2px solid #3364CA;
-        }
-
-        .profile-pic {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: 5px solid white;
-            object-fit: cover;
-        }
-
-        /* Main Container */
-        .main-container {
-            display: flex;
-            gap: 30px;
-            padding: 30px 20px;
-            max-width: 1512px;
-            margin: 0 auto;
-        }
-
-        /* Sidebar Styles */
-        .sidebar {
-            background: white;
-            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
-            border-radius: 10px;
-            padding: 20px;
-            width: 273px;
-            height: fit-content;
-            position: sticky;
-            top: 120px;
-        }
-
-        .sidebar-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .sidebar-item {
-            display: flex;
-            align-items: center;
-            gap: 11px;
-            padding: 11px 20px;
-            border-radius: 9px;
-            text-decoration: none;
-            color: #3364CA;
-            font-size: 16px;
-            font-weight: 300;
-            transition: all 0.3s ease;
-        }
-
-        .sidebar-item:hover {
-            background: #F0F4FF;
-        }
-
-        .sidebar-item.active {
-            background: #EFF3FB;
-            font-weight: 600;
-        }
-
-        .sidebar-icon {
-            width: 30px;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .sidebar-icon svg {
-            width: 24px;
-            height: 24px;
-            fill: #3364CA;
-        }
-
-        /* Content Area */
-        .content-area {
-            flex: 1;
-            background: white;
-            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
-            border-radius: 10px;
-            padding: 20px 30px;
-        }
-
-        .content-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .content-title {
-            color: #3364CA;
-            font-size: 38px;
-            font-weight: 600;
-            text-transform: capitalize;
-        }
-
-        .add-button {
-            background: linear-gradient(90deg, #3364CA 0%, #F4902E 100%);
-            color: white;
-            border: none;
-            padding: 16px 26px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .add-button:hover {
-            transform: translateY(-2px);
-        }
-
-        .time-selector-row {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            gap: 20px;
-            padding-bottom: 15px;
-            border-bottom: 5px solid #EFF3FB;
-            margin-bottom: 30px;
-        }
-
-        .time-selector {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #3364CA;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        /* Search Bar */
-        .search-container {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-
-        .search-bar {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 25px;
-            background: white;
-            border: 1px solid rgba(102, 102, 106, 0.2);
-            border-radius: 12px;
-        }
-
-        .search-bar input {
-            flex: 1;
-            border: none;
-            outline: none;
-            font-size: 16px;
-            color: #9C9686;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .search-icon {
-            width: 24px;
-            height: 24px;
-            opacity: 0.5;
-        }
-
-        .filter-button {
-            background: #3364CA;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .filter-button:hover {
-            background: #2854B9;
-        }
-
-        /* Card Grid */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 67px 21px;
-            margin-bottom: 30px;
-        }
-
-        .room-card {
-            background: white;
-            border: 1px solid #E4E4E4;
-            border-radius: 4px;
-            overflow: hidden;
-            transition: box-shadow 0.3s ease;
-        }
-
-        .room-card:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-content {
-            padding: 14px 21px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .status-badges {
-            display: flex;
-            gap: 10px;
-        }
-
-        .badge {
-            padding: 3.5px 5px;
-            border-radius: 3.5px;
-            font-size: 10.64px;
-            font-weight: 700;
-            line-height: 14.9px;
-        }
-
-        .badge.paid {
-            background: #1E9A26;
-            color: white;
-        }
-
-        .badge.unpaid {
-            background: #ED2939;
-            color: white;
-        }
-
-        .badge.inactive {
-            background: #EDF2FE;
-            color: #66666A;
-            font-weight: 500;
-        }
-
-        .card-title-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 8px;
-        }
-
-        .room-name {
-            flex: 1;
-            color: black;
-            font-size: 14.19px;
-            font-weight: 500;
-            line-height: 21.28px;
-        }
-
-        .house-name {
-            color: black;
-            font-size: 12.41px;
-            font-weight: 500;
-            line-height: 18px;
-            text-align: right;
-        }
-
-        .room-description {
-            color: #727272;
-            font-size: 12.41px;
-            font-weight: 400;
-            line-height: 18.62px;
-        }
-
-        .card-footer {
-            padding: 14px 21px;
-            border-top: 1px solid #E4E4E4;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .tenant-name {
-            color: black;
-            font-size: 12.41px;
-            font-weight: 500;
-            line-height: 18px;
-        }
-
-        .rent-amount {
-            color: #ED2939;
-            font-size: 12.41px;
-            font-weight: 600;
-            line-height: 18px;
-        }
-
-        /* Pagination */
-        .pagination-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 24px;
-            background: #EFF3FB;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-
-        .items-per-page {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px;
-            background: white;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
-
-        .items-per-page select {
-            border: none;
-            outline: none;
-            font-size: 16px;
-            font-family: 'Poppins', sans-serif;
-            background: transparent;
-            cursor: pointer;
-        }
-
-        .pagination-controls {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .pagination-button {
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            background: white;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .pagination-button:hover:not(.disabled) {
-            background: #F0F4FF;
-        }
-
-        .pagination-button.disabled {
-            background: rgba(0, 0, 0, 0.03);
-            cursor: not-allowed;
-            opacity: 0.5;
-        }
-
-        .page-numbers {
-            display: flex;
-            gap: 8px;
-        }
-
-        .page-number {
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            font-size: 16px;
-            font-family: 'Poppins', sans-serif;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .page-number.active {
-            background: #3364CA;
-            color: white;
-        }
-
-        .page-number:not(.active) {
-            color: rgba(0, 0, 0, 0.36);
-        }
-
-        .page-number:not(.active):hover {
-            background: #F0F4FF;
-        }
-
-        /* Action Buttons */
-        .action-buttons {
-            display: flex;
-            gap: 20px;
-        }
-
-        .action-btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: transparent;
-            color: #3364CA;
-        }
-
-        .action-btn:hover {
-            background: #F0F4FF;
-        }
-
-        /* Footer */
-        .footer {
-            background: white;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25) inset;
-            padding: 30px 40px;
-            margin-top: 50px;
-        }
-
-        .footer-content {
-            max-width: 1512px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 12px;
-        }
-
-        .social-icon {
-            width: 28px;
-            height: 28px;
-            background: #F4902E;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .social-icon:hover {
-            transform: scale(1.1);
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 40px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .footer-link {
-            color: black;
-            font-size: 20px;
-            font-weight: 400;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-link:hover {
-            color: #3364CA;
-        }
-
-        .copyright {
-            color: black;
-            font-size: 13px;
-            font-weight: 500;
-            text-align: center;
-        }
-
-        /* Mobile Menu Toggle */
-        .mobile-menu-toggle {
-            display: none;
-            background: #3364CA;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .cards-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 40px 20px;
-            }
-        }
-
-        @media (max-width: 968px) {
-            .main-container {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                width: 100%;
-                position: static;
-            }
-
-            .sidebar-menu {
-                flex-direction: row;
-                overflow-x: auto;
-                gap: 10px;
-            }
-
-            .sidebar-item {
-                white-space: nowrap;
-            }
-
-            .welcome-text {
-                font-size: 24px;
-            }
-
-            .content-title {
-                font-size: 28px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header {
-                padding: 15px 20px;
-            }
-
-            .logo {
-                width: 80px;
-                height: 60px;
-            }
-
-            .welcome-text {
-                display: none;
-            }
-
-            .nav-tabs {
-                gap: 20px;
-            }
-
-            .nav-tab {
-                font-size: 16px;
-            }
-
-            .mobile-menu-toggle {
-                display: block;
-            }
-
-            .sidebar {
-                display: none;
-            }
-
-            .sidebar.active {
-                display: block;
-            }
-
-            .cards-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .content-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
-            }
-
-            .add-button {
-                width: 100%;
-                text-align: center;
-            }
-
-            .search-container {
-                flex-direction: column;
-            }
-
-            .filter-button {
-                width: 100%;
-            }
-
-            .pagination-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 15px;
-            }
         }
     </style>
 </head>
-<body>
+<body class="bg-gray-100">
     <!-- Header -->
-    <header class="header">
-        <div class="logo-section">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-1-removebg-preview-transformed%20(1)-Aq4Aq0EZYbz0Aq4Aq0EZYbz0.png" alt="FlashAppart Logo" class="logo">
-            <h1 class="welcome-text">Bienvenue ImmoAppart</h1>
-        </div>
-        <nav class="header-nav">
-            <div class="nav-tabs">
-                <a href="#" class="nav-tab">Paramètres</a>
-                <a href="#" class="nav-tab active">Tableau de bord</a>
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-3 sm:px-4 py-3 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-2 sm:gap-4">
+                <img src="Images/Gemini_Generated_Image_mgy05mgy05mgy05m 1.png" alt="FlashAppart" class="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 object-contain">
+                <h1 class="text-sm sm:text-lg md:text-xl lg:text-2xl font-light text-[#22252D] capitalize">Bienvenue ImmoAppart</h1>
             </div>
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ellipse%2011-0Aq4Aq0EZYbz0.png" alt="Profile" class="profile-pic">
-        </nav>
+
+            <!-- Navigation Tabs & Profile -->
+            <div class="flex items-center gap-2 sm:gap-4">
+                <!-- Navigation Tabs -->
+                <nav class="hidden lg:flex items-center gap-4">
+                    <a href="parametre_profil.html" class="flex flex-col items-center gap-1 group">
+                        <span class="text-sm font-semibold text-[#22252D] group-hover:text-[#3364CA] transition-colors">Paramètres</span>
+                        <div class="h-0.5 w-0 group-hover:w-full bg-[#3364CA] transition-all duration-300"></div>
+                    </a>
+                    <a href="#" class="flex flex-col items-center gap-1 group">
+                        <span class="text-sm font-semibold text-[#3364CA]">Tableau de bord</span>
+                        <div class="h-0.5 w-full bg-[#3364CA]"></div>
+                    </a>
+                </nav>
+
+                <!-- Profile Picture -->
+                <div class="relative">
+                    <img src="https://placehold.co/60x60?text=User" alt="Profil" class="w-14 h-14 rounded-full border-4 border-white shadow-md">
+                </div>
+            </div>
+        </div>
     </header>
 
     <!-- Main Container -->
-    <div class="main-container">
+    <div class="max-w-7xl mx-auto px-3 py-4 lg:py-6 flex flex-col lg:flex-row gap-4 lg:gap-5">
         <!-- Sidebar -->
-        <aside class="sidebar" id="sidebar">
-            <nav class="sidebar-menu">
-                <a href="#" class="sidebar-item">
-                    <span class="sidebar-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/>
-                        </svg>
-                    </span>
-                    <span>Statistiques</span>
+        <aside class="w-full lg:w-64 bg-white rounded-lg shadow-md p-3 h-fit">
+            <nav class="flex flex-col gap-0">
+                <!-- Statistiques (Active) -->
+                <a href="dashboard_agence.html" class="flex items-center gap-2 px-3 py-3 rounded-lg hover:bg-[#EFF3FB] transition-all">
+                    <svg class="w-6 h-6 flex-shrink-0 text-[#3364CA]" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.5 17.5H5V8.75H7.5V17.5ZM12.5 17.5H10V5H12.5V17.5ZM17.5 17.5H15V12.5H17.5V17.5ZM20 20H2.5V2.5H20V20.125M20 0H2.5C1.125 0 0 1.125 0 2.5V20C0 21.375 1.125 22.5 2.5 22.5H20C21.375 22.5 22.5 21.375 22.5 20V2.5C22.5 1.125 21.375 0 20 0Z" fill="#3364CA"/>
+                    </svg>
+                    <span class="text-sm font-light text-[#3364CA] group-hover:font-semibold transition-all">Statistiques</span>
                 </a>
-                <a href="#" class="sidebar-item">
-                    <span class="sidebar-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-                        </svg>
-                    </span>
-                    <span>Mes Maisons</span>
+
+                <!-- Mes Maisons -->
+                <a href="mes_maisons.html" class="flex items-center gap-2 px-3 py-3 rounded-lg hover:bg-[#EFF3FB] transition-all group">
+                    <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 12L15 3L26 12V26H18V18H12V26H4V12Z" stroke="#3364CA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="text-sm font-light text-[#3364CA] group-hover:font-semibold transition-all">Mes Maisons</span>
                 </a>
-                <a href="#" class="sidebar-item active">
-                    <span class="sidebar-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/>
-                        </svg>
-                    </span>
-                    <span>Mes chambres</span>
+
+                <!-- Mes chambres -->
+                <a href="mes_chambres.html" class="flex items-center gap-2 px-3 py-3 rounded-lg bg-[#EFF3FB] transition-all group">
+                    <svg class="w-6 h-6 flex-shrink-0 text-[#3364CA]" viewBox="0 0 28 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 15H17.5V17.5H10V15ZM7.5 5H5V7.5H7.5V5ZM10 12.5H17.5V10H10V12.5ZM10 7.5H17.5V5H10V7.5ZM7.5 10H5V12.5H7.5V10ZM22.5 2.5V20C22.5 21.375 21.375 22.5 20 22.5H2.5C1.125 22.5 0 21.375 0 20V2.5C0 1.125 1.125 0 2.5 0H20C21.375 0 22.5 1.125 22.5 2.5ZM20 2.5H2.5V20H20V2.5ZM7.5 15H5V17.5H7.5V15Z" fill="#3364CA"/>
+                    </svg>
+                    <span class="text-sm text-[#3364CA] font-semibold">Mes chambres</span>
                 </a>
-                <a href="#" class="sidebar-item">
-                    <span class="sidebar-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
-                        </svg>
-                    </span>
-                    <span>Mes locataires</span>
+
+                <!-- Mes locataires -->
+                <a href="mes_locataires.html" class="flex items-center gap-2 px-3 py-3 rounded-lg hover:bg-[#EFF3FB] transition-all group">
+                    <svg class="w-6 h-6 flex-shrink-0 text-[#3364CA]" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3.75" y="3.75" width="22.5" height="22.5" rx="3" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <circle cx="15" cy="12" r="4" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <path d="M8 24C8 20 11 18 15 18C19 18 22 20 22 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="text-sm font-light text-[#3364CA] group-hover:font-semibold transition-all">Mes locataires</span>
                 </a>
-                <a href="#" class="sidebar-item">
-                    <span class="sidebar-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
-                        </svg>
-                    </span>
-                    <span>Historiques de paiement</span>
+
+                <!-- Historiques de paiement -->
+                <a href="historique_payement.html" class="flex items-center gap-2 px-3 py-3 rounded-lg hover:bg-[#EFF3FB] transition-all group">
+                    <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_253_56)">
+                        <path d="M2.5 2.5H7.5V0H2.5C1.125 0 0 1.125 0 2.5V7.5H2.5V2.5ZM27.5 0H22.5V2.5H27.5V7.5H30V2.5C30 1.125 28.875 0 27.5 0ZM2.5 22.5H0V27.5C0 28.875 1.125 30 2.5 30H7.5V27.5H2.5V22.5ZM27.5 27.5H22.5V30H27.5C28.875 30 30 28.875 30 27.5V22.5H27.5V27.5ZM10 7.5V5H12.5V7.5H10ZM12.5 17.5V15H15V17.5H12.5ZM20 5H22.5V7.5H20V5ZM22.5 7.5H25V10H22.5V7.5ZM22.5 17.5H25V20H22.5V17.5ZM25 15H20V22.5H25V25H5V5H7.5V7.5H10V12.5H7.5V15H10V17.5H12.5V20H15V22.5H17.5V20H15V17.5H17.5V12.5H12.5V7.5H15V5H17.5V10H20V12.5H25V15ZM10 22.5V20H7.5V22.5H10Z" fill="#3364CA"/>
+                        </g>
+                        <defs>
+                        <clipPath id="clip0_253_56">
+                        <rect width="30" height="30" fill="white"/>
+                        </clipPath>
+                        </defs>
+                    </svg>
+                    <span class="text-sm font-light text-[#3364CA] group-hover:font-semibold transition-all">Historiques de paiement</span>
                 </a>
-                <a href="#" class="sidebar-item">
-                    <span class="sidebar-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
-                        </svg>
-                    </span>
-                    <span>Mon portefeuille</span>
+
+                <!-- Mon portefeuille -->
+                <a href="portefeuille.html" class="flex items-center gap-2 px-3 py-3 rounded-lg hover:bg-[#EFF3FB] transition-all group">
+                    <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.75 15.075C18.4875 15.4375 18.3 15.8375 18.125 16.25H11.25V14.375C11.25 14.025 11.525 13.75 11.875 13.75H18.125C18.475 13.75 18.75 14.025 18.75 14.375V15.075ZM26.25 11.25H3.75V3.75H26.25V11.25ZM23.75 6.25H6.25V8.75H23.75V6.25ZM16.25 23.75H7.5V12.5H5V26.25H16.2875C16.25 26.125 16.25 26 16.25 25.875V23.75ZM28.75 21.625V26C28.75 26.75 28 27.5 27.125 27.5H20.25C19.5 27.5 18.75 26.75 18.75 25.875V21.5C18.75 20.75 19.5 20 20.25 20V18.125C20.25 16.375 22 15 23.75 15C25.5 15 27.25 16.375 27.25 18.125V20C28 20 28.75 20.75 28.75 21.625ZM25.625 18.125C25.625 17.125 24.75 16.5 23.75 16.5C22.75 16.5 21.875 17.125 21.875 18.125V20H25.625V18.125Z" fill="#3364CA"/>
+                    </svg>
+                    <span class="text-sm font-light text-[#3364CA] group-hover:font-semibold transition-all">Mon portefeuille</span>
                 </a>
             </nav>
         </aside>
 
         <!-- Content Area -->
-        <main class="content-area">
+        <main class="flex-1 bg-white shadow-md rounded-lg p-4 lg:p-6">
             <!-- Content Header -->
-            <div class="content-header">
-                <h2 class="content-title">Mes Chambres</h2>
-                <a href="create_chambre.html" class="add-button">Ajouter une nouvelle Chambre</a>
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-3 mb-5">
+                <h2 class="text-2xl lg:text-3xl font-semibold text-blue-600 capitalize">Mes Chambres</h2>
+                <a href="create_chambre.html" class="w-full lg:w-auto bg-blue-600 text-white px-5 py-3 rounded-xl text-sm font-semibold hover:shadow-lg transform hover:-translate-y-0.5 transition text-center">
+                    Ajouter une nouvelle Chambre
+                </a>
             </div>
 
             <!-- Time Selector -->
-            <div class="time-selector-row">
-                <div class="time-selector">
+            <div class="flex justify-end items-center pb-3 mb-5 border-b-4 border-blue-50">
+                <div class="flex items-center gap-2 text-blue-600 text-sm font-semibold cursor-pointer">
                     <span>Semaine</span>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7 10L12 15L17 10H7Z" fill="#3364CA"/>
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M7 10L12 15L17 10H7Z"/>
                     </svg>
                 </div>
             </div>
 
             <!-- Search Bar -->
-            <div class="search-container">
-                <div class="search-bar">
-                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#66666A"/>
+            <div class="flex flex-col md:flex-row gap-2 mb-5">
+                <div class="flex-1 flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-300 rounded-xl">
+                    <svg class="w-5 h-5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
                     </svg>
-                    <input type="text" placeholder="Rechercher par Nom maison, ou Adresse...">
+                    <input type="text" placeholder="Rechercher par Nom maison, ou Adresse..." class="flex-1 border-none outline-none text-sm text-gray-500 bg-transparent">
                 </div>
-                <button class="filter-button">Filtrer</button>
+                <button class="bg-blue-600 text-white px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-blue-700 transition">
+                    Filtrer
+                </button>
             </div>
 
             <!-- Cards Grid -->
-            <div class="cards-grid">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-5 mb-5">
                 <!-- Card 1 -->
-                <div class="room-card">
-                    <div class="card-content">
-                        <div class="status-badges">
-                            <span class="badge paid">En règle</span>
-                            <span class="badge inactive">Impayé</span>
+                <div class="bg-white border border-gray-200 rounded overflow-hidden hover:shadow-lg transition">
+                    <div class="p-4 flex flex-col gap-2">
+                        <div class="flex gap-2">
+                            <span class="px-2 py-0.5 bg-green-600 text-white text-[9px] font-bold rounded">En règle</span>
+                            <span class="px-2 py-0.5 bg-blue-50 text-gray-600 text-[9px] font-medium rounded">Impayé</span>
                         </div>
-                        <div class="card-title-row">
-                            <span class="room-name">Chambre 1</span>
-                            <span class="house-name">Maison A</span>
+                        <div class="flex justify-between items-start gap-2">
+                            <span class="flex-1 text-black text-sm font-medium leading-relaxed">Chambre 1</span>
+                            <span class="text-black text-xs font-medium text-right">Maison A</span>
                         </div>
-                        <p class="room-description">Deux Chambre salon sanitaire dallée situé au rez de chausée avec compteur personel eau et elctricité</p>
+                        <p class="text-gray-500 text-xs leading-relaxed">Deux Chambre salon sanitaire dallée situé au rez de chausée avec compteur personel eau et elctricité</p>
                     </div>
-                    <div class="card-footer">
-                        <span class="tenant-name">ASSIBA Jean</span>
-                        <span class="rent-amount">25 000 fcfa/mois</span>
+                    <div class="px-4 py-2.5 border-t border-gray-200 flex justify-between items-center">
+                        <span class="text-black text-xs font-medium">ASSIBA Jean</span>
+                        <span class="text-red-600 text-xs font-semibold">25 000 fcfa/mois</span>
                     </div>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="room-card">
-                    <div class="card-content">
-                        <div class="status-badges">
-                            <span class="badge inactive">En règle</span>
-                            <span class="badge unpaid">Impayé</span>
+                <div class="bg-white border border-gray-200 rounded overflow-hidden hover:shadow-lg transition">
+                    <div class="p-4 flex flex-col gap-2">
+                        <div class="flex gap-2">
+                            <span class="px-2 py-0.5 bg-blue-50 text-gray-600 text-[9px] font-medium rounded">En règle</span>
+                            <span class="px-2 py-0.5 bg-red-600 text-white text-[9px] font-bold rounded">Impayé</span>
                         </div>
-                        <div class="card-title-row">
-                            <span class="room-name">Chambre 2</span>
-                            <span class="house-name">Maison B</span>
+                        <div class="flex justify-between items-start gap-2">
+                            <span class="flex-1 text-black text-sm font-medium leading-relaxed">Chambre 2</span>
+                            <span class="text-black text-xs font-medium text-right">Maison B</span>
                         </div>
-                        <p class="room-description">Deux Chambre salon sanitaire dallée situé au rez de chausée avec compteur personel eau et elctricité</p>
+                        <p class="text-gray-500 text-xs leading-relaxed">Deux Chambre salon sanitaire dallée situé au rez de chausée avec compteur personel eau et elctricité</p>
                     </div>
-                    <div class="card-footer">
-                        <span class="tenant-name">ASSIBA Jean</span>
-                        <span class="rent-amount">30 000 fcfa/mois</span>
+                    <div class="px-4 py-2.5 border-t border-gray-200 flex justify-between items-center">
+                        <span class="text-black text-xs font-medium">ASSIBA Jean</span>
+                        <span class="text-red-600 text-xs font-semibold">30 000 fcfa/mois</span>
                     </div>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="room-card">
-                    <div class="card-content">
-                        <div class="status-badges">
-                            <span class="badge paid">En règle</span>
-                            <span class="badge inactive">Impayé</span>
+                <div class="bg-white border border-gray-200 rounded overflow-hidden hover:shadow-lg transition">
+                    <div class="p-4 flex flex-col gap-2">
+                        <div class="flex gap-2">
+                            <span class="px-2 py-0.5 bg-green-600 text-white text-[9px] font-bold rounded">En règle</span>
+                            <span class="px-2 py-0.5 bg-blue-50 text-gray-600 text-[9px] font-medium rounded">Impayé</span>
                         </div>
-                        <div class="card-title-row">
-                            <span class="room-name">Chambre 1</span>
-                            <span class="house-name">Maison C</span>
+                        <div class="flex justify-between items-start gap-2">
+                            <span class="flex-1 text-black text-sm font-medium leading-relaxed">Chambre 1</span>
+                            <span class="text-black text-xs font-medium text-right">Maison C</span>
                         </div>
-                        <p class="room-description">Deux Chambre salon sanitaire dallée situé au rez de chausée avec compteur personel eau et elctricité</p>
+                        <p class="text-gray-500 text-xs leading-relaxed">Deux Chambre salon sanitaire dallée situé au rez de chausée avec compteur personel eau et elctricité</p>
                     </div>
-                    <div class="card-footer">
-                        <span class="tenant-name">ASSIBA Jean</span>
-                        <span class="rent-amount">25 000 fcfa/mois</span>
+                    <div class="px-4 py-2.5 border-t border-gray-200 flex justify-between items-center">
+                        <span class="text-black text-xs font-medium">ASSIBA Jean</span>
+                        <span class="text-red-600 text-xs font-semibold">25 000 fcfa/mois</span>
                     </div>
                 </div>
 
                 <!-- Card 4 -->
-                <div class="room-card">
-                    <div class="card-content">
-                        <div class="status-badges">
-                            <span class="badge paid">En règle</span>
-                            <span class="badge inactive">Impayé</span>
+                <div class="bg-white border border-gray-200 rounded overflow-hidden hover:shadow-lg transition">
+                    <div class="p-4 flex flex-col gap-2">
+                        <div class="flex gap-2">
+                            <span class="px-2 py-0.5 bg-green-600 text-white text-[9px] font-bold rounded">En règle</span>
+                            <span class="px-2 py-0.5 bg-blue-50 text-gray-600 text-[9px] font-medium rounded">Impayé</span>
                         </div>
-                        <div class="card-title-row">
-                            <span class="room-name">Chambre 1</span>
-                            <span class="house-name">Maison A</span>
+                        <div class="flex justify-between items-start gap-2">
+                            <span class="flex-1 text-black text-sm font-medium leading-relaxed">Chambre 1</span>
+                            <span class="text-black text-xs font-medium text-right">Maison A</span>
                         </div>
-                        <p class="room-description">Deux Chambre salon sanitaire dallée situé au rez de chausée avec compteur personel eau et elctricité</p>
+                        <p class="text-gray-500 text-xs leading-relaxed">Deux Chambre salon sanitaire dallée situé au rez de chausée avec compteur personel eau et elctricité</p>
                     </div>
-                    <div class="card-footer">
-                        <span class="tenant-name">ASSIBA Jean</span>
-                        <span class="rent-amount">25 000 fcfa/mois</span>
+                    <div class="px-4 py-2.5 border-t border-gray-200 flex justify-between items-center">
+                        <span class="text-black text-xs font-medium">ASSIBA Jean</span>
+                        <span class="text-red-600 text-xs font-semibold">25 000 fcfa/mois</span>
                     </div>
                 </div>
 
                 <!-- Card 5 -->
-                <div class="room-card">
-                    <div class="card-content">
-                        <div class="status-badges">
-                            <span class="badge inactive">En règle</span>
-                            <span class="badge unpaid">Impayé</span>
+                <div class="bg-white border border-gray-200 rounded overflow-hidden hover:shadow-lg transition">
+                    <div class="p-4 flex flex-col gap-2">
+                        <div class="flex gap-2">
+                            <span class="px-2 py-0.5 bg-blue-50 text-gray-600 text-[9px] font-medium rounded">En règle</span>
+                            <span class="px-2 py-0.5 bg-red-600 text-white text-[9px] font-bold rounded">Impayé</span>
                         </div>
-                        <div class="card-title-row">
-                            <span class="room-name">Chambre 2</span>
-                            <span class="house-name">Maison D</span>
+                        <div class="flex justify-between items-start gap-2">
+                            <span class="flex-1 text-black text-sm font-medium leading-relaxed">Chambre 2</span>
+                            <span class="text-black text-xs font-medium text-right">Maison D</span>
                         </div>
-                        <p class="room-description">Deux Chambre salon sanitaire dallée situé au rez de chausée avec compteur personel eau et elctricité</p>
+                        <p class="text-gray-500 text-xs leading-relaxed">Deux Chambre salon sanitaire dallée situé au rez de chausée avec compteur personel eau et elctricité</p>
                     </div>
-                    <div class="card-footer">
-                        <span class="tenant-name">ASSIBA Jean</span>
-                        <span class="rent-amount">30 000 fcfa/mois</span>
+                    <div class="px-4 py-2.5 border-t border-gray-200 flex justify-between items-center">
+                        <span class="text-black text-xs font-medium">ASSIBA Jean</span>
+                        <span class="text-red-600 text-xs font-semibold">30 000 fcfa/mois</span>
                     </div>
                 </div>
 
                 <!-- Card 6 -->
-                <div class="room-card">
-                    <div class="card-content">
-                        <div class="status-badges">
-                            <span class="badge paid">En règle</span>
-                            <span class="badge inactive">Impayé</span>
+                <div class="bg-white border border-gray-200 rounded overflow-hidden hover:shadow-lg transition">
+                    <div class="p-4 flex flex-col gap-2">
+                        <div class="flex gap-2">
+                            <span class="px-2 py-0.5 bg-green-600 text-white text-[9px] font-bold rounded">En règle</span>
+                            <span class="px-2 py-0.5 bg-blue-50 text-gray-600 text-[9px] font-medium rounded">Impayé</span>
                         </div>
-                        <div class="card-title-row">
-                            <span class="room-name">Chambre 1</span>
-                            <span class="house-name">Maison A</span>
+                        <div class="flex justify-between items-start gap-2">
+                            <span class="flex-1 text-black text-sm font-medium leading-relaxed">Chambre 1</span>
+                            <span class="text-black text-xs font-medium text-right">Maison A</span>
                         </div>
-                        <p class="room-description">Deux Chambre salon sanitaire dallée situé au rez de chausée avec compteur personel eau et elctricité</p>
+                        <p class="text-gray-500 text-xs leading-relaxed">Deux Chambre salon sanitaire dallée situé au rez de chausée avec compteur personel eau et elctricité</p>
                     </div>
-                    <div class="card-footer">
-                        <span class="tenant-name">ASSIBA Jean</span>
-                        <span class="rent-amount">25 000 fcfa/mois</span>
-                    </div>
-                </div>
-
-                <!-- Laravel Integration Example:
-                @foreach($chambres as $chambre)
-                <div class="room-card">
-                    <div class="card-content">
-                        <div class="status-badges">
-                            <span class="badge {{ $chambre->est_en_regle ? 'paid' : 'inactive' }}">En règle</span>
-                            <span class="badge {{ $chambre->a_impaye ? 'unpaid' : 'inactive' }}">Impayé</span>
-                        </div>
-                        <div class="card-title-row">
-                            <span class="room-name">{{ $chambre->nom }}</span>
-                            <span class="house-name">{{ $chambre->maison->nom }}</span>
-                        </div>
-                        <p class="room-description">{{ $chambre->description }}</p>
-                    </div>
-                    <div class="card-footer">
-                        <span class="tenant-name">{{ $chambre->locataire->nom_complet ?? 'Vacant' }}</span>
-                        <span class="rent-amount">{{ number_format($chambre->loyer, 0, ',', ' ') }} fcfa/mois</span>
+                    <div class="px-4 py-2.5 border-t border-gray-200 flex justify-between items-center">
+                        <span class="text-black text-xs font-medium">ASSIBA Jean</span>
+                        <span class="text-red-600 text-xs font-semibold">25 000 fcfa/mois</span>
                     </div>
                 </div>
-                @endforeach
-                -->
             </div>
 
             <!-- Pagination -->
-            <div class="pagination-container">
-                <div class="items-per-page">
-                    <select>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-3 p-3 lg:px-4 bg-blue-50 border border-gray-200 rounded-lg mb-4">
+                <div class="flex items-center gap-1 px-2 py-1.5 bg-white border border-gray-200 rounded-lg">
+                    <select class="border-none outline-none text-sm bg-transparent cursor-pointer">
                         <option value="6">6</option>
                         <option value="12">12</option>
                         <option value="24">24</option>
                         <option value="48">48</option>
                     </select>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7 10L12 15L17 10H7Z" fill="rgba(0,0,0,0.4)"/>
-                    </svg>
+                    
                 </div>
 
-                <div class="pagination-controls">
-                    <button class="pagination-button disabled">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15 18L9 12L15 6" stroke="rgba(0,0,0,0.36)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <div class="flex items-center gap-2">
+                    <button class="w-9 h-9 flex items-center justify-center rounded-xl border border-gray-200 bg-gray-50 cursor-not-allowed opacity-50">
+                        <svg class="w-5 h-5 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
                         </svg>
                     </button>
 
-                    <div class="page-numbers">
-                        <div class="page-number active">1</div>
-                        <div class="page-number">2</div>
-                        <div class="page-number">3</div>
-                        <div class="page-number">.</div>
-                        <div class="page-number">5</div>
+                    <div class="flex gap-1.5">
+                        <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-blue-600 text-white text-sm cursor-pointer">1</div>
+                        <div class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-400 text-sm cursor-pointer hover:bg-blue-50 transition">2</div>
+                        <div class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-400 text-sm cursor-pointer hover:bg-blue-50 transition">3</div>
+                        <div class="w-8 h-8 flex items-center justify-center text-gray-400 text-sm">.</div>
+                        <div class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-400 text-sm cursor-pointer hover:bg-blue-50 transition">5</div>
                     </div>
 
-                    <button class="pagination-button">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 18L15 12L9 6" stroke="rgba(0,0,0,0.4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <button class="w-9 h-9 flex items-center justify-center rounded-xl border border-gray-200 bg-white cursor-pointer hover:bg-blue-50 transition">
+                        <svg class="w-5 h-5 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
                         </svg>
                     </button>
                 </div>
             </div>
 
             <!-- Action Buttons -->
-            <div class="action-buttons">
-                <button class="action-btn">Exporter</button>
-                <button class="action-btn">Actualiser</button>
+            <div class="flex gap-4">
+                <button class="px-5 py-2.5 bg-transparent text-blue-600 rounded-xl text-sm font-semibold hover:bg-blue-50 transition">Exporter</button>
+                <button class="px-5 py-2.5 bg-transparent text-blue-600 rounded-xl text-sm font-semibold hover:bg-blue-50 transition">Actualiser</button>
             </div>
         </main>
     </div>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="social-icons">
-                <div class="social-icon">
-                    <svg width="12" height="10" viewBox="0 0 12 10" fill="white" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M11.17 1.5c-.42.18-.87.31-1.34.37.48-.29.85-.75 1.03-1.3-.45.27-.95.46-1.48.57-.43-.46-1.04-.74-1.71-.74-1.3 0-2.35 1.05-2.35 2.35 0 .18.02.36.06.53-1.95-.1-3.68-.97-4.84-2.31-.2.35-.32.75-.32 1.18 0 .81.41 1.53 1.04 1.95-.38-.01-.74-.12-1.05-.29v.03c0 1.14.81 2.09 1.89 2.31-.2.05-.41.08-.62.08-.15 0-.3-.01-.44-.04.3.94 1.18 1.63 2.22 1.65-.81.63-1.83 1.01-2.94 1.01-.19 0-.38-.01-.56-.03 1.04.67 2.28 1.06 3.61 1.06 4.33 0 6.7-3.59 6.7-6.7 0-.1 0-.2-.01-.3.46-.33.86-.74 1.18-1.21z"/>
-                    </svg>
-                </div>
-                <div class="social-icon">
-                    <svg width="7" height="13" viewBox="0 0 7 13" fill="white" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4.5 4.5V3c0-.55.45-1 1-1h1V0h-2C3.12 0 2 1.12 2 2.5V4.5H0V7h2v6h2.5V7H6l.5-2.5H4.5z"/>
-                    </svg>
-                </div>
-                <div class="social-icon">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="white" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7 0C3.13 0 0 3.13 0 7s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 10c-1.93 0-3.64-1.06-4.55-2.63.03-1.51 3.03-2.34 4.55-2.34s4.52.83 4.55 2.34C10.64 10.94 8.93 12 7 12z"/>
-                    </svg>
-                </div>
-                <div class="social-icon">
-                    <svg width="13" height="13" viewBox="0 0 13 13" fill="white" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.5 0C2.91 0 0 2.91 0 6.5S2.91 13 6.5 13 13 10.09 13 6.5 10.09 0 6.5 0zm3.25 4.55l-.7 3.3c-.05.23-.19.29-.39.18l-1.07-.79-.52.5c-.06.06-.11.11-.22.11l.08-1.13 2.06-1.86c.09-.08-.02-.12-.14-.05L5.46 7.02l-1.03-.32c-.22-.07-.23-.22.05-.33l4.03-1.55c.19-.07.35.04.29.33z"/>
-                    </svg>
+    <footer class="bg-white shadow-[inset_0_2px_4px_rgba(0,0,0,0.25)] py-4 mt-8">
+        <div class="max-w-7xl mx-auto px-3">
+            <!-- Social Icons & Links Section -->
+            <div class="flex flex-col md:flex-row items-center justify-center gap-3 mb-3">
+                <!-- Bloc icônes + liens -->
+                <div class="flex flex-wrap items-center justify-center gap-3">
+                    <!-- Icônes sociales -->
+                    <div class="flex items-center justify-center gap-2">
+                        <a href="#" class="w-6 h-6 bg-[#F4902E] rounded-full flex items-center justify-center hover:opacity-80 transition">
+                            <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-6 h-6 bg-[#F4902E] rounded-full flex items-center justify-center hover:opacity-80 transition">
+                            <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-6 h-6 bg-[#F4902E] rounded-full flex items-center justify-center hover:opacity-80 transition">
+                            <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-6 h-6 bg-[#F4902E] rounded-full flex items-center justify-center hover:opacity-80 transition">
+                            <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- Liens -->
+                    <nav class="flex flex-wrap items-center justify-center gap-3 text-center">
+                        <a href="#" class="text-black text-xs hover:text-[#3364CA] transition">FaQs</a>
+                        <a href="#" class="text-black text-xs hover:text-[#3364CA] transition">Politique de confidentialité</a>
+                        <a href="#" class="text-black text-xs hover:text-[#3364CA] transition">Conditions générales</a>
+                    </nav>
                 </div>
             </div>
 
-            <div class="footer-links">
-                <a href="#" class="footer-link">FaQs</a>
-                <a href="#" class="footer-link">Politique de confidentialité</a>
-                <a href="#" class="footer-link">Conditions générales d'utilisation</a>
+            <!-- Copyright -->
+            <div class="text-center pt-3 border-t border-gray-200">
+                <p class="text-black text-xs font-medium">
+                    Copyright © <span id="year">2024</span>. Tous droits réservés
+                </p>
             </div>
-
-            <p class="copyright">Copyright © 2025. Touts droits réservés</p>
         </div>
     </footer>
 
     <script>
-        // Mobile menu toggle
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const sidebar = document.getElementById('sidebar');
+        // Mise à jour automatique de l'année du copyright
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 
-        if (mobileMenuToggle) {
-            mobileMenuToggle.addEventListener('click', () => {
-                sidebar.classList.toggle('active');
-            });
-        }
-
+    <script>
         // Pagination functionality
-        const pageNumbers = document.querySelectorAll('.page-number:not(.active)');
+        const pageNumbers = document.querySelectorAll('.flex.gap-1\\.5 > div:not(:nth-child(4))');
         pageNumbers.forEach(page => {
             page.addEventListener('click', function() {
-                if (this.textContent !== '.') {
-                    document.querySelector('.page-number.active').classList.remove('active');
-                    this.classList.add('active');
+                if (!this.classList.contains('bg-blue-600')) {
+                    const currentActive = document.querySelector('.bg-blue-600.text-white');
+                    if (currentActive) {
+                        currentActive.classList.remove('bg-blue-600', 'text-white');
+                        currentActive.classList.add('text-gray-400');
+                    }
+                    this.classList.remove('text-gray-400');
+                    this.classList.add('bg-blue-600', 'text-white');
                 }
             });
         });
 
         // Items per page selector
-        const itemsPerPageSelect = document.querySelector('.items-per-page select');
+        const itemsPerPageSelect = document.querySelector('select');
         if (itemsPerPageSelect) {
             itemsPerPageSelect.addEventListener('change', function() {
                 console.log('Items per page changed to:', this.value);
-                // In Laravel: wire:model="perPage" or form submission
             });
         }
 
         // Search functionality
-        const searchInput = document.querySelector('.search-bar input');
+        const searchInput = document.querySelector('input[type="text"]');
         if (searchInput) {
             searchInput.addEventListener('input', function() {
                 console.log('Search query:', this.value);
-                // In Laravel: wire:model.debounce.300ms="search"
-            });
-        }
-
-        // Filter button
-        const filterButton = document.querySelector('.filter-button');
-        if (filterButton) {
-            filterButton.addEventListener('click', function() {
-                console.log('Filter button clicked');
-                // In Laravel: wire:click="applyFilters" or open filter modal
-            });
-        }
-
-        // Export button
-        const exportButton = document.querySelector('.action-btn:first-child');
-        if (exportButton) {
-            exportButton.addEventListener('click', function() {
-                console.log('Export button clicked');
-                // In Laravel: route to export controller method
-            });
-        }
-
-        // Refresh button
-        const refreshButton = document.querySelector('.action-btn:last-child');
-        if (refreshButton) {
-            refreshButton.addEventListener('click', function() {
-                console.log('Refresh button clicked');
-                // In Laravel: wire:click="$refresh" or location.reload()
-                location.reload();
             });
         }
     </script>
